@@ -1,2 +1,2 @@
-wp-accordion-plugin
-===================
+WordPress Accordion Plugin
+==========================
