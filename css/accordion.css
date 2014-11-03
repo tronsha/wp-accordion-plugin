@@ -1,0 +1,17 @@
+.accordion > h2, 
+.accordion > h3, 
+.accordion > h4, 
+.accordion > h5, 
+.accordion > h6,
+.accordion > strong {
+    cursor: pointer;
+}
+
+.accordion > div {
+    height: 0;
+    overflow: hidden;
+}
+
+.accordion > div:first-child {
+    height: auto;
+}
