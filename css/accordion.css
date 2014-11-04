@@ -1,17 +1,18 @@
-.accordion > h2, 
+.accordion > h2,
 .accordion > h3, 
 .accordion > h4, 
 .accordion > h5, 
 .accordion > h6,
 .accordion > strong {
     cursor: pointer;
+    display: block;
+    max-width: 100%;
 }
 
 .accordion > div {
+    display: block;
     height: 0;
+    max-width: 100%;
     overflow: hidden;
 }
 
-.accordion > div:first-child {
-    height: auto;
-}
