@@ -4,15 +4,21 @@
 .accordion > h5, 
 .accordion > h6,
 .accordion > strong {
+    background-color: #000000;
+    border-radius: 3px;
+    color: #FFFFFF;
     cursor: pointer;
     display: block;
+	margin: 4px 0 0 0!important;
     max-width: 100%;
+	padding: 4px 8px;
 }
 
 .accordion > div {
     display: block;
     height: 0;
+	margin: 4px 0 0 0;
     max-width: 100%;
+    padding: 0 8px;
     overflow: hidden;
 }
-
