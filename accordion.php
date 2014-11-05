@@ -24,13 +24,13 @@ add_action(
         if (!is_admin()) {
             wp_register_style(
                 'accordion',
-                plugin_dir_url(__FILE__) . 'slider/css/accordion.css',
+                plugin_dir_url(__FILE__) . 'css/accordion.css',
                 array(),
                 '1.0.0'
             );
             wp_register_script(
                 'accordion',
-                plugin_dir_url(__FILE__) . 'slider/js/accordion.js',
+                plugin_dir_url(__FILE__) . 'js/accordion.js',
                 array('jquery'),
                 '1.0.0'
             );
