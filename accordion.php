@@ -23,19 +23,19 @@ add_action(
     function () {
         if (!is_admin()) {
             wp_register_style(
-                'accordion',
+                'accordionplugin',
                 plugin_dir_url(__FILE__) . 'css/accordion.css',
                 array(),
                 '1.0.0'
             );
             wp_register_script(
-                'accordion',
+                'accordionplugin',
                 plugin_dir_url(__FILE__) . 'js/accordion.js',
                 array('jquery'),
                 '1.0.0'
             );
-            wp_enqueue_style('accordion');
-            wp_enqueue_script('accordion');
+            wp_enqueue_style('accordionplugin');
+            wp_enqueue_script('accordionplugin');
         }
     }
 );
