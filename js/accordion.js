@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
     });
     $('.accordion').children('h2, h3, h4, h5, h6, strong').each(function () {
         var $this = $(this);
-        $this.prepend('<i class="fa fa-caret-right" style="width: 16px;"></i>');
+        $this.prepend('<i class="fa fa-caret-right"></i>');
         $this.bind('click', function () {
             var $div = $this.next('div');
             if ($div.hasClass('open') === false) {
