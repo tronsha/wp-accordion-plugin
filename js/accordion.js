@@ -5,12 +5,16 @@ jQuery(document).ready(function () {
     });
     $('.accordion').children('h2, h3, h4, h5, h6, strong').each(function () {
         var $this = $(this);
+        $this.prepend('<i class="fa fa-caret-right" style="width: 16px;"></i>');
         $this.bind('click', function () {
             var $div = $this.next('div');
             if ($div.hasClass('open') === false) {
                 $(this).parent('.accordion').children('div.open').each(function () {
                     $(this).animate({height: 0}, 1000);
                     $(this).removeClass('open');
+                });
+                $(this).parent('.accordion').find('.fa-caret-down').each(function () {
+                    $(this).removeClass('fa-caret-down').addClass('fa-caret-right');
                 });
                 $div.css('height', 'auto');
                 var autoHeight = $div.height();
@@ -19,6 +23,11 @@ jQuery(document).ready(function () {
                 $div.animate({height: autoHeight}, 1000, function () {
                     $div.css('height', 'auto');
                 });
+                $this.find('.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
+            } else {
+                $div.removeClass('open');
+                $div.animate({height: 0}, 1000);
+                $this.find('.fa').removeClass('fa-caret-down').addClass('fa-caret-right');
             }
         });
     });
