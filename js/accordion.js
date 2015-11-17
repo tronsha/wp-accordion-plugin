@@ -5,8 +5,21 @@ jQuery(document).ready(function () {
     });
     $('.accordion').children('h2, h3, h4, h5, h6, strong').each(function () {
         var $this = $(this);
-        $this.prepend('<i class="fa fa-caret-right"></i>');
+        if ('#' + $this.attr('id') == window.location.hash) {
+            $this.prepend('<i class="fa fa-caret-down"></i>');
+            $this.next('div').addClass('open').css('height', 'auto');
+        } else {
+            $this.prepend('<i class="fa fa-caret-right"></i>');
+        }
         $this.bind('click', function () {
+            location.href = '#' + $this.attr('id');
+            setTimeout(function () {
+                if ($this.length) {
+                    $('html,body').animate({
+                        scrollTop: ($this.offset().top - 40)
+                    }, 1000);
+                }
+            }, 1000);
             var $div = $this.next('div');
             if ($div.hasClass('open') === false) {
                 $(this).parent('.accordion').children('div.open').each(function () {
