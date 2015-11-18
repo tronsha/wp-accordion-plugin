@@ -14,12 +14,7 @@
     padding: 4px 8px;
 }
 
-.accordion > h2 > i.fa,
-.accordion > h3 > i.fa,
-.accordion > h4 > i.fa,
-.accordion > h5 > i.fa,
-.accordion > h6 > i.fa,
-.accordion > strong > i.fa {
+.accordion > * > i.fa {
     width: 16px;
 }
 
