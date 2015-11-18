@@ -34,8 +34,8 @@ add_action(
                 array('jquery'),
                 '1.1.0'
             );
-            wp_enqueue_style('accordionplugin');
-            wp_enqueue_script('accordionplugin');
+            wp_enqueue_style('accordion');
+            wp_enqueue_script('accordion');
         }
     }
 );
