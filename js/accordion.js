@@ -12,18 +12,11 @@ jQuery(document).ready(function () {
             $this.prepend('<i class="fa fa-caret-right"></i>');
         }
         $this.bind('click', function () {
-            location.href = '#' + $this.attr('id');
-            setTimeout(function () {
-                if ($this.length) {
-                    $('html,body').animate({
-                        scrollTop: ($this.offset().top - 40)
-                    }, 1000);
-                }
-            }, 1000);
             var $div = $this.next('div');
             if ($div.hasClass('open') === false) {
+                window.location.hash = $this.attr('id');
                 $(this).parent('.accordion').children('div.open').each(function () {
-                    $(this).animate({height: 0}, 1000);
+                    $(this).animate({height: 0}, 500);
                     $(this).removeClass('open');
                 });
                 $(this).parent('.accordion').find('.fa-caret-down').each(function () {
@@ -33,13 +26,19 @@ jQuery(document).ready(function () {
                 var autoHeight = $div.height();
                 $div.css('height', '0');
                 $div.addClass('open');
-                $div.animate({height: autoHeight}, 1000, function () {
+                $div.animate({height: autoHeight}, 500, function () {
                     $div.css('height', 'auto');
+                    if ($this.length) {
+                        $('html,body').animate({
+                            scrollTop: ($this.offset().top - 6)
+                        }, 250);
+                    }
                 });
                 $this.find('.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
             } else {
+                window.location.hash = '';
                 $div.removeClass('open');
-                $div.animate({height: 0}, 1000);
+                $div.animate({height: 0}, 500);
                 $this.find('.fa').removeClass('fa-caret-down').addClass('fa-caret-right');
             }
         });
