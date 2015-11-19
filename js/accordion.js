@@ -14,7 +14,9 @@ jQuery(document).ready(function () {
         $this.bind('click', function () {
             var $div = $this.next('div');
             if ($div.hasClass('open') === false) {
-                window.location.hash = $this.attr('id');
+                if ($this.attr('id') != undefined) {
+                    window.location.hash = $this.attr('id');
+                }
                 $(this).parent('.accordion').children('div.open').each(function () {
                     $(this).animate({height: 0}, 500);
                     $(this).removeClass('open');
@@ -36,7 +38,9 @@ jQuery(document).ready(function () {
                 });
                 $this.find('.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
             } else {
-                window.location.hash = '!';
+                if ($this.attr('id') != undefined) {
+                    window.location.hash = '!';
+                }
                 $div.removeClass('open');
                 $div.animate({height: 0}, 500);
                 $this.find('.fa').removeClass('fa-caret-down').addClass('fa-caret-right');
