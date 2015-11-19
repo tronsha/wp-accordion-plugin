@@ -36,7 +36,7 @@ jQuery(document).ready(function () {
                 });
                 $this.find('.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
             } else {
-                window.location.hash = '';
+                window.location.hash = '!';
                 $div.removeClass('open');
                 $div.animate({height: 0}, 500);
                 $this.find('.fa').removeClass('fa-caret-down').addClass('fa-caret-right');
