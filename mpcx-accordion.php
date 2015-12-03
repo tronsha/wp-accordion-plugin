@@ -23,19 +23,19 @@ add_action(
     function () {
         if (!is_admin()) {
             wp_register_style(
-                'accordion',
-                plugin_dir_url(__FILE__) . 'css/accordion.css',
+                'mpcx-accordion',
+                plugin_dir_url(__FILE__) . 'css/mpcx-accordion.css',
                 array(),
                 '1.1.0'
             );
             wp_register_script(
-                'accordion',
-                plugin_dir_url(__FILE__) . 'js/accordion.js',
+                'mpcx-accordion',
+                plugin_dir_url(__FILE__) . 'js/mpcx-accordion.js',
                 array('jquery'),
                 '1.1.0'
             );
-            wp_enqueue_style('accordion');
-            wp_enqueue_script('accordion');
+            wp_enqueue_style('mpcx-accordion');
+            wp_enqueue_script('mpcx-accordion');
         }
     }
 );
