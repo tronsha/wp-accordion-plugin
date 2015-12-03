@@ -43,5 +43,7 @@ add_action(
 add_shortcode(
     'accordion',
     function ($att = array(), $content = null) {
+        $content = do_shortcode( $content );
+        echo '<div class="accordion">' . $content . '</div>';
     }
 );
