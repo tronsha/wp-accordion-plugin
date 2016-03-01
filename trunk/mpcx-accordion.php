@@ -8,7 +8,7 @@
  * Plugin Name:       MPCX Accordion
  * Plugin URI:        https://github.com/tronsha/wp-accordion-plugin
  * Description:       Accordion Plugin
- * Version:           1.1.1
+ * Version:           1.1.2
  * Author:            Stefan Hüsges
  * Author URI:        http://www.mpcx.net/
  * Copyright:         Stefan Hüsges
@@ -26,13 +26,13 @@ add_action(
                 'mpcx-accordion',
                 plugin_dir_url(__FILE__) . 'css/mpcx-accordion.min.css',
                 array(),
-                '1.1.1'
+                '1.1.2'
             );
             wp_register_script(
                 'mpcx-accordion',
                 plugin_dir_url(__FILE__) . 'js/mpcx-accordion.min.js',
                 array('jquery'),
-                '1.1.1'
+                '1.1.2'
             );
             wp_enqueue_style('mpcx-accordion');
             wp_enqueue_script('mpcx-accordion');
