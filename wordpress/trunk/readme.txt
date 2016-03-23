@@ -7,9 +7,11 @@ Stable tag: 1.1.5
 License: MIT
 License URI: https://raw.githubusercontent.com/tronsha/wp-accordion-plugin/master/LICENSE
 
+Just Another Accordion Plugin
+
 == Description ==
 
-Just Another Accordion Plugin
+[Source Code on GitHub](https://github.com/tronsha/wp-accordion-plugin)
 
 = Documentation =
 
