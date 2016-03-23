@@ -19,31 +19,32 @@
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 add_action(
-    'init',
-    function () {
-        if (!is_admin()) {
-            wp_register_style(
-                'mpcx-accordion',
-                plugin_dir_url(__FILE__) . 'public/css/mpcx-accordion.min.css',
-                array(),
-                '1.1.5'
-            );
-            wp_register_script(
-                'mpcx-accordion',
-                plugin_dir_url(__FILE__) . 'public/js/mpcx-accordion.min.js',
-                array('jquery'),
-                '1.1.5'
-            );
-            wp_enqueue_style('mpcx-accordion');
-            wp_enqueue_script('mpcx-accordion');
-        }
-    }
+	'init',
+	function () {
+		if ( ! is_admin() ) {
+			wp_register_style(
+				'mpcx-accordion',
+				plugin_dir_url( __FILE__ ) . 'public/css/mpcx-accordion.min.css',
+				array(),
+				'1.1.5'
+			);
+			wp_register_script(
+				'mpcx-accordion',
+				plugin_dir_url( __FILE__ ) . 'public/js/mpcx-accordion.min.js',
+				array( 'jquery' ),
+				'1.1.5'
+			);
+			wp_enqueue_style( 'mpcx-accordion' );
+			wp_enqueue_script( 'mpcx-accordion' );
+		}
+	}
 );
 
 add_shortcode(
-    'accordion',
-    function ($att = array(), $content = null) {
-        $content = do_shortcode( $content );
-        return '<div class="accordion">' . $content . '</div>';
-    }
+	'accordion',
+	function ( $att = array(), $content = null ) {
+		$content = do_shortcode( $content );
+
+		return '<div class="accordion">' . $content . '</div>';
+	}
 );
