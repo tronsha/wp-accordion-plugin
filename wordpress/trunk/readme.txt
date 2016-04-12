@@ -15,7 +15,7 @@ Just Another Accordion Plugin
 
 = Documentation =
 
-Here you can find the [Documentation](https://github.com/tronsha/wp-accordion-plugin/blob/master/README.md)
+The Plugin requires PHP 5.3.2 or newer.
 
 == Installation ==
 
