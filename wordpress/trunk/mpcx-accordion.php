@@ -7,7 +7,7 @@
  * @wordpress-plugin
  * Plugin Name:       Accordion
  * Plugin URI:        https://github.com/tronsha/wp-accordion-plugin
- * Description:       Just Another Accordion Plugin
+ * Description:       Just an Accordion Plugin.
  * Version:           1.1.6
  * Author:            Stefan Hüsges
  * Author URI:        http://www.mpcx.net/
