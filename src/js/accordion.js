@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
     var $ = jQuery;
     $('.accordion').children('div').each(function () {
-        $(this).css('height', '0');
+        $(this).css('height', $(this).hasClass('open') === true ? 'auto' : '0');
     });
     $('.accordion').children('h2, h3, h4, h5, h6, strong').each(function () {
         var $this = $(this);
