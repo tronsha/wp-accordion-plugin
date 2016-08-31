@@ -30,9 +30,13 @@ jQuery(document).ready(function () {
                 $div.addClass('open');
                 $div.animate({height: autoHeight}, 500, function () {
                     $div.css('height', 'auto');
-                    if ($this.length) {
+                    if ($this.length && $('.accordion').hasClass('scroll')) {
+                        var margintop = 6;
+                        if ($('#wpadminbar').length) {
+                            margintop += parseInt($('html').css('margin-top'));
+                        }
                         $('html,body').animate({
-                            scrollTop: ($this.offset().top - 6)
+                            scrollTop: ($this.offset().top - margintop)
                         }, 250);
                     }
                 });
