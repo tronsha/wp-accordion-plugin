@@ -25,6 +25,27 @@ register_activation_hook(
 	}
 );
 
+if ( is_admin() ) {
+
+	add_action(
+		'admin_menu',
+		function () {
+			add_menu_page(
+				'Accordion',
+				'Accordion',
+				'manage_options',
+				'accordion',
+				function () {
+					include plugin_dir_path( __FILE__ ) . 'admin/options.php';
+				},
+				'dashicons-clipboard',
+				20
+			);
+		}
+	);
+
+}
+
 if ( ! is_admin() ) {
 
 	add_action(
@@ -52,13 +73,14 @@ if ( ! is_admin() ) {
 		function ( $att = array(), $content = null ) {
 			if ( isset( $att['id'] ) === true ) {
 				$accordion = json_decode( get_option( 'mpcx-accordion' ), true );
-				$content = '';
+				$content   = '';
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {
 					$content .= '<h3>' . $data['headline'] . '</h3><div>' . $data['text'] . '</div>';
 				}
 			} else {
 				$content = do_shortcode( $content );
 			}
+
 			return '<div class="accordion">' . $content . '</div>';
 		}
 	);
