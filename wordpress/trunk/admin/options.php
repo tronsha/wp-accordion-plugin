@@ -15,7 +15,7 @@ $accordions = json_decode( get_option( 'mpcx-accordion' ), true );
 	<div class="wrap">
 		<h1>Accordion</h1>
 		<table class="wp-list-table widefat fixed striped posts">
-			<tbody id="the-list" data-wp-lists="list:post">
+			<thead>
 			<tr>
 				<th>
 					<strong>Title</strong>
@@ -24,6 +24,8 @@ $accordions = json_decode( get_option( 'mpcx-accordion' ), true );
 					<strong>Shortcode</strong>
 				</th>
 			</tr>
+			</thead>
+			<tbody id="the-list" data-wp-lists="list:post">
 			<?php foreach ( $accordions as $key => $accordion ): ?>
 				<tr>
 					<td>
