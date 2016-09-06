@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 register_activation_hook(
 	__FILE__,
 	function () {
-		add_option( 'mpcx-accordion', '[]' );
+		add_option( 'mpcx_accordion', json_encode([0 => ['version' => '1.2.0']]) );
 	}
 );
 
@@ -71,8 +71,8 @@ if ( ! is_admin() ) {
 	add_shortcode(
 		'accordion',
 		function ( $att = array(), $content = null ) {
-			if ( isset( $att['id'] ) === true ) {
-				$accordion = json_decode( get_option( 'mpcx-accordion' ), true );
+			if ( isset( $att['id'] ) === true && $att['id'] > 0 ) {
+				$accordion = json_decode( get_option( 'mpcx_accordion' ), true );
 				$content   = '';
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {
 					$content .= '<h3>' . $data['headline'] . '</h3><div>' . $data['text'] . '</div>';

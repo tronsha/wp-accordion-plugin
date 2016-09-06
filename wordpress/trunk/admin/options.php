@@ -6,7 +6,7 @@
  */
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-$accordions = json_decode( get_option( 'mpcx-accordion' ), true );
+$accordions = json_decode( get_option( 'mpcx_accordion' ), true );
 
 ?>
 
@@ -27,6 +27,9 @@ $accordions = json_decode( get_option( 'mpcx-accordion' ), true );
 			</thead>
 			<tbody id="the-list" data-wp-lists="list:post">
 			<?php foreach ( $accordions as $key => $accordion ): ?>
+				<?php if ( $key === 0 ) {
+					continue;
+				} ?>
 				<tr>
 					<td>
 						<strong>
@@ -57,7 +60,7 @@ $accordions = json_decode( get_option( 'mpcx-accordion' ), true );
 					$data[ $i ]['text']     = $_POST['text'][ $i ];
 				}
 				$accordions[ $_GET['id'] ]['data'] = $data;
-				update_option( 'mpcx-accordion', json_encode( $accordions ) );
+				update_option( 'mpcx_accordion', json_encode( $accordions ) );
 			}
 			$i = 1;
 			?>
