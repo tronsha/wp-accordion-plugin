@@ -10,42 +10,7 @@ $accordions = json_decode( get_option( 'mpcx_accordion' ), true );
 
 ?>
 
-<?php if ( isset( $_GET['id'] ) === false ) : ?>
-
-	<div class="wrap">
-		<h1>Accordion</h1>
-		<table class="wp-list-table widefat fixed striped posts">
-			<thead>
-			<tr>
-				<th>
-					<strong>Title</strong>
-				</th>
-				<th>
-					<strong>Shortcode</strong>
-				</th>
-			</tr>
-			</thead>
-			<tbody id="the-list" data-wp-lists="list:post">
-			<?php foreach ( $accordions as $key => $accordion ): ?>
-				<?php if ( $key === 0 ) {
-					continue;
-				} ?>
-				<tr>
-					<td>
-						<strong>
-							<a href="admin.php?page=accordion&amp;id=<?php echo $key; ?>"><?php echo $accordion['title']; ?></a>
-						</strong>
-					</td>
-					<td>
-						[accordion id="<?php echo $key; ?>" /]
-					</td>
-				</tr>
-			<?php endforeach; ?>
-			</tbody>
-		</table>
-	</div>
-
-<?php else: ?>
+<?php if ( isset( $_GET['id'] ) === true ) : ?>
 
 	<div class="wrap">
 		<h1>Accordion</h1>
@@ -73,9 +38,9 @@ $accordions = json_decode( get_option( 'mpcx_accordion' ), true );
 						</td>
 						<td>
 							<h3>Headline</h3>
-							<input type="text" id="headline_<?php echo $key; ?>" name="headline[<?php echo $key; ?>]" value="<?php echo htmlentities( $data['headline'] ); ?>" style="width: 100%;"/>
+							<input type="text" id="headline_<?php echo $key; ?>" name="headline[<?php echo $key; ?>]" value="<?php echo esc_attr( $data['headline'] ); ?>" style="width: 100%;"/>
 							<h3>Text</h3>
-							<textarea id="text_<?php echo $key; ?>" name="text[<?php echo $key; ?>]" rows="10" style="width: 100%;"><?php echo htmlentities( $data['text'] ); ?></textarea>
+							<textarea id="text_<?php echo $key; ?>" name="text[<?php echo $key; ?>]" rows="10" style="width: 100%;"><?php echo esc_textarea( $data['text'] ); ?></textarea>
 						</td>
 					</tr>
 					<?php $i++; ?>
@@ -84,6 +49,52 @@ $accordions = json_decode( get_option( 'mpcx_accordion' ), true );
 			<input type="hidden" name="count" value="<?php echo $count; ?>">
 			<?php submit_button(); ?>
 		</form>
+	</div>
+
+<?php elseif ( isset( $_GET['delete'] ) === true ) : ?>
+
+
+<?php else: ?>
+
+	<div class="wrap">
+		<h1>Accordion</h1>
+		<table class="wp-list-table widefat fixed striped posts">
+			<thead>
+			<tr>
+				<th>
+					<strong>Title</strong>
+				</th>
+				<th>
+					<strong>Shortcode</strong>
+				</th>
+				<th style="width: 60px;">
+
+				</th>
+			</tr>
+			</thead>
+			<tbody id="the-list" data-wp-lists="list:post">
+			<?php foreach ( $accordions as $key => $accordion ): ?>
+				<?php if ( $key === 0 ) {
+					continue;
+				} ?>
+				<tr>
+					<td>
+						<strong>
+							<a href="admin.php?page=accordion&amp;id=<?php echo $key; ?>"><?php echo $accordion['title']; ?></a>
+						</strong>
+					</td>
+					<td>
+						[accordion id="<?php echo $key; ?>" /]
+					</td>
+					<td>
+						<a href="admin.php?page=accordion&amp;id=<?php echo $key; ?>"><span class="dashicons dashicons-edit"></span></a>
+						&#160;
+						<a href="admin.php?page=accordion&amp;delete=<?php echo $key; ?>"><span class="dashicons dashicons-trash"></span></a>
+					</td>
+				</tr>
+			<?php endforeach; ?>
+			</tbody>
+		</table>
 	</div>
 
 <?php endif; ?>
