@@ -24,3 +24,5 @@ The Plugin requires PHP 5.3.2 or newer.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Changelog ==
+
+= 1.2.0 =
