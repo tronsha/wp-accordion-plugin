@@ -22,3 +22,7 @@ The Plugin requires PHP 5.3.2 or newer.
 
 1. Upload `mpcx-accordion` to the `/wp-content/plugins/` directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
+
+== Changelog ==
+
+= 1.2.0 =
