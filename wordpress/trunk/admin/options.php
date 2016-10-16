@@ -13,7 +13,9 @@ $accordions = json_decode( get_option( 'mpcx_accordion' ), true );
 <?php if ( isset( $_GET['id'] ) === true ) : ?>
 
 	<div class="wrap">
-		<h1>Accordion</h1>
+		<h1>
+			Accordion
+		</h1>
 		<form method="post" action="admin.php?page=accordion&amp;id=<?php echo $_GET['id']; ?>">
 			<?php submit_button(); ?>
 			<?php
@@ -56,8 +58,13 @@ $accordions = json_decode( get_option( 'mpcx_accordion' ), true );
 
 <?php else: ?>
 
+	<?php $post_type_object = get_post_type_object( 'page' ); ?>
+
 	<div class="wrap">
-		<h1>Accordion</h1>
+		<h1>
+			Accordion
+			<a href="#" class="page-title-action"><?php echo esc_html( $post_type_object->labels->add_new ); ?></a>
+		</h1>
 		<table class="wp-list-table widefat fixed striped posts">
 			<thead>
 			<tr>
