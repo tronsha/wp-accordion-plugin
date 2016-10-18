@@ -1,5 +1,23 @@
 <?php
-$id = $_GET['edit'];
+$id = (int) $_GET['edit'];
+if ( $id === 0 ) {
+	$id = 1 + (int) $accordions[0]['index'];
+	$update_index = true;
+}
+$count = count( $accordions[ $id ]['data'] );
+if ( isset( $_POST['submit'] ) === true ) {
+	if ( isset( $_POST['index'] ) === true ) {
+		$accordions[0]['index'] = $_POST['index'];
+	}
+	$data = [ ];
+	for ( $i = 0; $i < $count; $i ++ ) {
+		$data[ $i ]['headline'] = $_POST['headline'][ $i ];
+		$data[ $i ]['text']     = $_POST['text'][ $i ];
+	}
+	$accordions[ $id ]['data'] = $data;
+	$accordions[ $id ]['title'] = $_POST['title'];
+	update_option( 'mpcx_accordion', json_encode( $accordions ) );
+}
 ?>
 <div class="wrap">
 	<h1>
@@ -7,19 +25,8 @@ $id = $_GET['edit'];
 	</h1>
 	<form method="post" action="admin.php?page=accordion&amp;edit=<?php echo $id; ?>">
 		<?php submit_button(); ?>
-		<?php
-		$count = count( $accordions[ $id ]['data'] );
-		if ( isset( $_POST['submit'] ) === true ) {
-			$data = [ ];
-			for ( $i = 0; $i < $count; $i ++ ) {
-				$data[ $i ]['headline'] = $_POST['headline'][ $i ];
-				$data[ $i ]['text']     = $_POST['text'][ $i ];
-			}
-			$accordions[ $id ]['data'] = $data;
-			update_option( 'mpcx_accordion', json_encode( $accordions ) );
-		}
-		$i = 1;
-		?>
+		<h3>Titel</h3>
+		<input type="text"  name="title" value="<?php echo esc_attr( $accordions[ $id ]['title'] ? $accordions[ $id ]['title'] : 'Accordion ' . $id ); ?>"  style="width: 100%;"/>
 		<table class="form-table">
 			<?php $i = 1; ?>
 			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
@@ -38,6 +45,9 @@ $id = $_GET['edit'];
 			<?php endforeach; ?>
 		</table>
 		<input type="hidden" name="count" value="<?php echo $count; ?>">
+		<?php if ( $update_index ): ?>
+			<input type="hidden" name="index" value="<?php echo $id; ?>">
+		<?php endif; ?>
 		<?php submit_button(); ?>
 	</form>
 </div>

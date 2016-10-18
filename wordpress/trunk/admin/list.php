@@ -4,7 +4,7 @@ $post_type_object = get_post_type_object( 'page' );
 <div class="wrap">
 	<h1>
 		Accordion
-		<a href="#" class="page-title-action"><?php echo esc_html( $post_type_object->labels->add_new ); ?></a>
+		<a href="admin.php?page=accordion&amp;edit=0" class="page-title-action"><?php echo esc_html( $post_type_object->labels->add_new ); ?></a>
 	</h1>
 	<table class="wp-list-table widefat fixed striped posts">
 		<thead>
