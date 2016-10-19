@@ -25,8 +25,12 @@ if ( isset( $_POST['submit'] ) === true ) {
 	</h1>
 	<form method="post" action="admin.php?page=accordion&amp;edit=<?php echo $id; ?>">
 		<?php submit_button(); ?>
-		<h3>Titel</h3>
-		<input type="text"  name="title" value="<?php echo esc_attr( $accordions[ $id ]['title'] ? $accordions[ $id ]['title'] : 'Accordion ' . $id ); ?>"  style="width: 100%;"/>
+		<div id="titlediv">
+			<div id="titlewrap">
+				<label class="screen-reader-text" id="title-prompt-text" for="title">Titel</label>
+				<input type="text" name="title" size="30" value="<?php echo esc_attr( $accordions[ $id ]['title'] ? $accordions[ $id ]['title'] : 'Accordion ' . $id ); ?>" id="title" spellcheck="true" autocomplete="off">
+			</div>
+		</div>
 		<table class="form-table">
 			<?php $i = 1; ?>
 			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
