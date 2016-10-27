@@ -37,6 +37,14 @@ if ( isset( $_POST['submit'] ) === true ) {
 				<tr>
 					<td style="vertical-align: top; font-weight: bold;">
 						<h2><?php echo $i; ?>.)</h2>
+						<?php
+						if ( $i !== $count ) {
+							echo '<span class="dashicons dashicons-arrow-down"></span>';
+						}
+						if ( $i !== 1 ) {
+							echo '<span class="dashicons dashicons-arrow-up"></span>';
+						}
+						?>
 					</td>
 					<td>
 						<h3>Headline</h3>
