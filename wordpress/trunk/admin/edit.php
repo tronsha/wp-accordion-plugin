@@ -14,6 +14,10 @@ if ( isset( $_POST['submit'] ) === true ) {
 		$data[ $i ]['headline'] = $_POST['headline'][ $i ];
 		$data[ $i ]['text']     = $_POST['text'][ $i ];
 	}
+	if (strlen($_POST['headline'][-1]) > 0 ||  strlen($_POST['text'][-1]) > 0) {
+		$data[ $i ]['headline'] = $_POST['headline'][-1];
+		$data[ $i ]['text']     = $_POST['text'][-1];
+	}
 	$accordions[ $id ]['data'] = $data;
 	$accordions[ $id ]['title'] = $_POST['title'];
 	update_option( 'mpcx_accordion', json_encode( $accordions ) );
@@ -37,14 +41,14 @@ if ( isset( $_POST['submit'] ) === true ) {
 				<tr>
 					<td style="vertical-align: top; font-weight: bold;">
 						<h2><?php echo $i; ?>.)</h2>
-						<?php
-						if ( $i !== $count ) {
-							echo '<span class="dashicons dashicons-arrow-down"></span>';
-						}
-						if ( $i !== 1 ) {
-							echo '<span class="dashicons dashicons-arrow-up"></span>';
-						}
-						?>
+						<?php if ( $count >= 2 ) : ?>
+							<?php if ( $i !== $count ) : ?>
+								<span class="dashicons dashicons-arrow-down"></span>
+							<?php endif; ?>
+							<?php if ( $i !== 1 ) : ?>
+								<span class="dashicons dashicons-arrow-up"></span>
+							<?php endif; ?>
+						<?php endif; ?>
 					</td>
 					<td>
 						<h3>Headline</h3>
@@ -55,6 +59,19 @@ if ( isset( $_POST['submit'] ) === true ) {
 				</tr>
 				<?php $i ++; ?>
 			<?php endforeach; ?>
+			<?php if ( $count === 0 || isset($_GET['add']) ) : ?>
+				<tr>
+					<td style="vertical-align: top; font-weight: bold;">
+						New:
+					</td>
+					<td>
+						<h3>Headline</h3>
+						<input type="text" id="headline_new" name="headline[-1]" value="" style="width: 100%;"/>
+						<h3>Text</h3>
+						<textarea id="text_new" name="text[-1]" rows="10" style="width: 100%;"></textarea>
+					</td>
+				</tr>
+			<?php endif; ?>
 		</table>
 		<input type="hidden" name="count" value="<?php echo $count; ?>">
 		<?php if ( $update_index ): ?>
