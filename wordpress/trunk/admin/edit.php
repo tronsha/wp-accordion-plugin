@@ -40,7 +40,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
 				<tr>
 					<td style="vertical-align: top; font-weight: bold;">
-						<h2><?php echo $i; ?>.)</h2>
+						<h2><?php echo $i; ?>.)
 						<?php if ( $count >= 2 ) : ?>
 							<?php if ( $i !== $count ) : ?>
 								<span class="dashicons dashicons-arrow-down"></span>
@@ -49,6 +49,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 								<span class="dashicons dashicons-arrow-up"></span>
 							<?php endif; ?>
 						<?php endif; ?>
+						</h2>
 					</td>
 					<td>
 						<h3>Headline</h3>
