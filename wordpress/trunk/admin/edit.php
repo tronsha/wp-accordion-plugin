@@ -4,8 +4,8 @@ if ( $id === 0 ) {
 	$id = 1 + (int) $accordions[0]['index'];
 	$update_index = true;
 }
-$count = count( $accordions[ $id ]['data'] );
 if ( isset( $_POST['submit'] ) === true ) {
+	$count = count( $accordions[ $id ]['data'] );
 	if ( isset( $_POST['index'] ) === true ) {
 		$accordions[0]['index'] = $_POST['index'];
 	}
@@ -22,6 +22,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 	$accordions[ $id ]['title'] = $_POST['title'];
 	update_option( 'mpcx_accordion', json_encode( $accordions ) );
 }
+$count = count( $accordions[ $id ]['data'] );
 ?>
 <div class="wrap">
 	<h1>
