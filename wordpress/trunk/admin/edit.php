@@ -32,7 +32,7 @@ $count = count( $accordions[ $id ]['data'] );
 		<?php submit_button(); ?>
 		<div id="titlediv">
 			<div id="titlewrap">
-				<label class="screen-reader-text" id="title-prompt-text" for="title">Titel</label>
+				<label class="screen-reader-text" id="title-prompt-text" for="title"><?php _e( 'Title', 'mpcx-accordion' ); ?></label>
 				<input type="text" name="title" size="30" value="<?php echo esc_attr( $accordions[ $id ]['title'] ? $accordions[ $id ]['title'] : 'Accordion ' . $id ); ?>" id="title" spellcheck="true" autocomplete="off">
 			</div>
 		</div>
@@ -53,9 +53,9 @@ $count = count( $accordions[ $id ]['data'] );
 						</h2>
 					</td>
 					<td>
-						<h3>Headline</h3>
+						<h3><?php _e( 'Headline', 'mpcx-accordion' ); ?></h3>
 						<input type="text" id="headline_<?php echo $key; ?>" name="headline[<?php echo $key; ?>]" value="<?php echo esc_attr( $data['headline'] ); ?>" style="width: 100%;"/>
-						<h3>Text</h3>
+						<h3><?php _e( 'Text', 'mpcx-accordion' ); ?></h3>
 						<textarea id="text_<?php echo $key; ?>" name="text[<?php echo $key; ?>]" rows="10" style="width: 100%;"><?php echo esc_textarea( $data['text'] ); ?></textarea>
 					</td>
 				</tr>
@@ -64,12 +64,12 @@ $count = count( $accordions[ $id ]['data'] );
 			<?php if ( $count === 0 || isset($_GET['add']) ) : ?>
 				<tr>
 					<td style="vertical-align: top; font-weight: bold;">
-						New:
+						<?php _e( 'New', 'mpcx-accordion' ); ?>:
 					</td>
 					<td>
-						<h3>Headline</h3>
+						<h3><?php _e( 'Headline', 'mpcx-accordion' ); ?></h3>
 						<input type="text" id="headline_new" name="headline[-1]" value="" style="width: 100%;"/>
-						<h3>Text</h3>
+						<h3><?php _e( 'Text', 'mpcx-accordion' ); ?></h3>
 						<textarea id="text_new" name="text[-1]" rows="10" style="width: 100%;"></textarea>
 					</td>
 				</tr>

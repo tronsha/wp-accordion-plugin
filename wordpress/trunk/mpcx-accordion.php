@@ -18,7 +18,7 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-load_plugin_textdomain( 'mpcx_accordion', false, dirname( plugin_basename( __FILE__ ) ) . '/localization' );
+load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FILE__ ) ) . '/localization' );
 
 register_activation_hook(
 	__FILE__,

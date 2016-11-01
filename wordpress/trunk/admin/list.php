@@ -10,10 +10,10 @@ $post_type_object = get_post_type_object( 'page' );
 		<thead>
 		<tr>
 			<th>
-				<strong>Title</strong>
+				<strong><?php _e( 'Title', 'mpcx-accordion' ); ?></strong>
 			</th>
 			<th>
-				<strong>Shortcode</strong>
+				<strong><?php _e( 'Shortcode', 'mpcx-accordion' ); ?></strong>
 			</th>
 			<th style="width: 60px;">
 
