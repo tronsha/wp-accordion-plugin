@@ -15,20 +15,20 @@ msgstr ""
 
 #: ../admin/list.php:13 ../admin/edit.php:35
 msgid "Title"
-msgstr "Title"
+msgstr ""
 
 #: ../admin/list.php:16
 msgid "Shortcode"
-msgstr "Shortcode"
+msgstr ""
 
 #: ../admin/edit.php:56 ../admin/edit.php:70
 msgid "Headline"
-msgstr "Headline"
+msgstr ""
 
 #: ../admin/edit.php:58 ../admin/edit.php:72
 msgid "Text"
-msgstr "Text"
+msgstr ""
 
 #: ../admin/edit.php:67
 msgid "New"
-msgstr "New"
+msgstr ""
