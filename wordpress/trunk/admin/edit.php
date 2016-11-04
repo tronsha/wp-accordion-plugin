@@ -40,7 +40,7 @@ $count = count( $accordions[ $id ]['data'] );
 			<?php $i = 1; ?>
 			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
 				<tr>
-					<td style="vertical-align: top; font-weight: bold;">
+					<td style="width: 100px; vertical-align: top; font-weight: bold;">
 						<h2><?php echo $i; ?>.)
 						<?php if ( $count >= 2 ) : ?>
 							<?php if ( $i !== $count ) : ?>
@@ -63,7 +63,7 @@ $count = count( $accordions[ $id ]['data'] );
 			<?php endforeach; ?>
 			<?php if ( $count === 0 || isset($_GET['add']) ) : ?>
 				<tr>
-					<td style="vertical-align: top; font-weight: bold;">
+					<td style="width: 100px; vertical-align: top; font-weight: bold;">
 						<?php _e( 'New', 'mpcx-accordion' ); ?>:
 					</td>
 					<td>
