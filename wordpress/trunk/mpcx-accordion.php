@@ -30,6 +30,19 @@ register_activation_hook(
 if ( is_admin() ) {
 
 	add_action(
+		'init',
+		function () {
+			wp_register_script(
+				'mpcx-accordion',
+				plugin_dir_url( __FILE__ ) . 'admin/js/accordion.min.js',
+				array( 'jquery' ),
+				'1.2.0'
+			);
+			wp_enqueue_script( 'mpcx-accordion' );
+		}
+	);
+
+	add_action(
 		'admin_menu',
 		function () {
 			add_menu_page(
