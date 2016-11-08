@@ -1,3 +1,7 @@
+.accordion .pointer {
+    cursor: pointer;
+}
+
 .accordion .wp-list-table tr td:last-child {
     width: 60px;
 }
