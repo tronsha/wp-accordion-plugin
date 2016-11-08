@@ -24,7 +24,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 }
 $count = count( $accordions[ $id ]['data'] );
 ?>
-<div class="wrap">
+<div class="wrap accordion">
 	<h1>
 		Accordion
 	</h1>
@@ -40,37 +40,40 @@ $count = count( $accordions[ $id ]['data'] );
 			<?php $i = 1; ?>
 			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
 				<tr>
-					<td style="width: 100px; vertical-align: top; font-weight: bold;">
-						<h2><?php echo $i; ?>.)
-						<?php if ( $count >= 2 ) : ?>
-							<?php if ( $i !== $count ) : ?>
-								<span class="dashicons dashicons-arrow-down"></span>
+					<td>
+						<h2>
+							<?php echo $i; ?>.)
+							<?php if ( $count >= 2 ) : ?>
+								<?php if ( $i !== $count ) : ?>
+									<span class="dashicons dashicons-arrow-down"></span>
+								<?php endif; ?>
+								<?php if ( $i !== 1 ) : ?>
+									<span class="dashicons dashicons-arrow-up"></span>
+								<?php endif; ?>
 							<?php endif; ?>
-							<?php if ( $i !== 1 ) : ?>
-								<span class="dashicons dashicons-arrow-up"></span>
-							<?php endif; ?>
-						<?php endif; ?>
 						</h2>
 					</td>
 					<td>
 						<h3><?php _e( 'Headline', 'mpcx-accordion' ); ?></h3>
-						<input type="text" id="headline_<?php echo $key; ?>" name="headline[<?php echo $key; ?>]" value="<?php echo esc_attr( $data['headline'] ); ?>" style="width: 100%;"/>
+						<input type="text" id="headline_<?php echo $key; ?>" name="headline[<?php echo $key; ?>]" value="<?php echo esc_attr( $data['headline'] ); ?>"/>
 						<h3><?php _e( 'Text', 'mpcx-accordion' ); ?></h3>
-						<textarea id="text_<?php echo $key; ?>" name="text[<?php echo $key; ?>]" rows="10" style="width: 100%;"><?php echo esc_textarea( $data['text'] ); ?></textarea>
+						<textarea id="text_<?php echo $key; ?>" name="text[<?php echo $key; ?>]" rows="10"><?php echo esc_textarea( $data['text'] ); ?></textarea>
 					</td>
 				</tr>
 				<?php $i ++; ?>
 			<?php endforeach; ?>
 			<?php if ( $count === 0 || isset($_GET['add']) ) : ?>
 				<tr>
-					<td style="width: 100px; vertical-align: top; font-weight: bold;">
-						<?php _e( 'New', 'mpcx-accordion' ); ?>:
+					<td>
+						<h2>
+							<?php _e( 'New', 'mpcx-accordion' ); ?>:
+						</h2>
 					</td>
 					<td>
 						<h3><?php _e( 'Headline', 'mpcx-accordion' ); ?></h3>
-						<input type="text" id="headline_new" name="headline[-1]" value="" style="width: 100%;"/>
+						<input type="text" id="headline_new" name="headline[-1]" value=""/>
 						<h3><?php _e( 'Text', 'mpcx-accordion' ); ?></h3>
-						<textarea id="text_new" name="text[-1]" rows="10" style="width: 100%;"></textarea>
+						<textarea id="text_new" name="text[-1]" rows="10"></textarea>
 					</td>
 				</tr>
 			<?php endif; ?>
