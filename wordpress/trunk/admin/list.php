@@ -1,10 +1,19 @@
 <?php
+/**
+ * @link    https://github.com/tronsha/wp-accordion-plugin
+ * @since   1.2.0
+ * @package wp-accordion-plugin
+ */
+
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
 $post_type_object = get_post_type_object( 'page' );
+
 ?>
 <div class="wrap accordion">
 	<h1>
 		Accordion
-		<a href="admin.php?page=accordion&amp;edit=0" class="page-title-action"><?php echo esc_html( $post_type_object->labels->add_new ); ?></a>
+		<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=0' ); ?>" class="page-title-action"><?php echo esc_html( $post_type_object->labels->add_new ); ?></a>
 	</h1>
 	<table class="wp-list-table widefat fixed">
 		<thead>
@@ -20,7 +29,7 @@ $post_type_object = get_post_type_object( 'page' );
 			</td>
 		</tr>
 		</thead>
-		<tbody id="the-list" data-wp-lists="list:post">
+		<tbody>
 		<?php foreach ( $accordions as $key => $accordion ): ?>
 			<?php if ( $key === 0 ) {
 				continue;
@@ -28,18 +37,18 @@ $post_type_object = get_post_type_object( 'page' );
 			<tr>
 				<td>
 					<strong>
-						<a href="admin.php?page=accordion&amp;edit=<?php echo $key; ?>"><?php echo $accordion['title']; ?></a>
+						<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $key ); ?>"><?php echo $accordion['title']; ?></a>
 					</strong>
 				</td>
 				<td>
 					[accordion id="<?php echo $key; ?>" /]
 				</td>
 				<td>
-					<a href="admin.php?page=accordion&amp;edit=<?php echo $key; ?>">
+					<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $key ); ?>">
 						<span class="dashicons dashicons-edit"></span>
 					</a>
 					&#160;
-					<a href="admin.php?page=accordion&amp;delete=<?php echo $key; ?>">
+					<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;delete=' . $key ); ?>" onclick="return confirm('<?php printf( __( 'Are you sure you want to delete %s?', 'mpcx-accordion' ), $accordion['title'] ); ?>');">
 						<span class="dashicons dashicons-trash"></span>
 					</a>
 				</td>

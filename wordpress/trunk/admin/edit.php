@@ -1,9 +1,19 @@
 <?php
+/**
+ * @link    https://github.com/tronsha/wp-accordion-plugin
+ * @since   1.2.0
+ * @package wp-accordion-plugin
+ */
+
+defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
 $id = (int) $_GET['edit'];
+
 if ( $id === 0 ) {
 	$id = 1 + (int) $accordions[0]['index'];
 	$update_index = true;
 }
+
 if ( isset( $_POST['submit'] ) === true ) {
 	$count = count( $accordions[ $id ]['data'] );
 	if ( isset( $_POST['index'] ) === true ) {
@@ -22,13 +32,15 @@ if ( isset( $_POST['submit'] ) === true ) {
 	$accordions[ $id ]['title'] = $_POST['title'];
 	update_option( 'mpcx_accordion', json_encode( $accordions ) );
 }
+
 $count = count( $accordions[ $id ]['data'] );
+
 ?>
 <div class="wrap accordion">
 	<h1>
 		Accordion
 	</h1>
-	<form method="post" action="admin.php?page=accordion&amp;edit=<?php echo $id; ?>">
+	<form method="post" action="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $id ); ?>">
 		<?php submit_button(); ?>
 		<div id="titlediv">
 			<div id="titlewrap">

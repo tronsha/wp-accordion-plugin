@@ -4,6 +4,7 @@
  * @since   1.2.0
  * @package wp-accordion-plugin
  */
+
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 $accordions = json_decode( get_option( 'mpcx_accordion' ), true );

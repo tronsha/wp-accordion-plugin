@@ -1,34 +1,39 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Accordion\n"
-"POT-Creation-Date: 2016-11-01 17:55+0100\n"
-"PO-Revision-Date: 2016-11-01 17:58+0100\n"
+"POT-Creation-Date: 2016-11-09 10:05+0100\n"
+"PO-Revision-Date: 2016-11-09 10:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: Stefan Hüsges\n"
-"Language: English\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.8.7.1\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n:1,2\n"
-"X-Poedit-SearchPath-0: ..\n"
+"X-Poedit-Basepath: ..\n"
 
-#: ../admin/list.php:13 ../admin/edit.php:35
+#: admin/edit.php:42 admin/list.php:17
 msgid "Title"
 msgstr ""
 
-#: ../admin/list.php:16
-msgid "Shortcode"
-msgstr ""
-
-#: ../admin/edit.php:56 ../admin/edit.php:70
+#: admin/edit.php:64 admin/edit.php:80
 msgid "Headline"
 msgstr ""
 
-#: ../admin/edit.php:58 ../admin/edit.php:72
+#: admin/edit.php:66 admin/edit.php:82
 msgid "Text"
 msgstr ""
 
-#: ../admin/edit.php:67
+#: admin/edit.php:76
 msgid "New"
+msgstr ""
+
+#: admin/list.php:20
+msgid "Shortcode"
+msgstr ""
+
+#: admin/list.php:46
+#, php-format
+msgid "Are you sure you want to delete %s?"
 msgstr ""
