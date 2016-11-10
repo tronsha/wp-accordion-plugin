@@ -10,6 +10,16 @@ jQuery(document).ready(function () {
         move(position, position - 1);
     });
 
+    jQuery('input[type="text"], textarea').bind('change keyup', function() {
+        jQuery(window).bind('beforeunload', function () {
+            return '';
+        });
+    });
+
+    jQuery('input[type="submit"]').bind('click', function() {
+        jQuery(window).unbind('beforeunload');
+    });
+
 });
 
 function move(from, to) {
