@@ -10,25 +10,18 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 $id = (int) $_GET['edit'];
 
 if ( $id === 0 ) {
-	$id = 1 + (int) $accordions[0]['index'];
+	$id           = 1 + (int) $accordions[0]['index'];
 	$update_index = true;
 }
 
 if ( isset( $_POST['submit'] ) === true ) {
-	$count = count( $accordions[ $id ]['data'] );
-	if ( isset( $_POST['index'] ) === true ) {
-		$accordions[0]['index'] = $_POST['index'];
+	foreach ( $_POST['headline'] as $key => $headline ) {
+		$data[ $key ]['headline'] = $headline;
 	}
-	$data = [ ];
-	for ( $i = 0; $i < $count; $i ++ ) {
-		$data[ $i ]['headline'] = $_POST['headline'][ $i ];
-		$data[ $i ]['text']     = $_POST['text'][ $i ];
+	foreach ( $_POST['text'] as $key => $text ) {
+		$data[ $key ]['text'] = $text;
 	}
-	if (strlen($_POST['headline'][-1]) > 0 ||  strlen($_POST['text'][-1]) > 0) {
-		$data[ $i ]['headline'] = $_POST['headline'][-1];
-		$data[ $i ]['text']     = $_POST['text'][-1];
-	}
-	$accordions[ $id ]['data'] = $data;
+	$accordions[ $id ]['data']  = $data;
 	$accordions[ $id ]['title'] = $_POST['title'];
 	update_option( 'mpcx_accordion', json_encode( $accordions ) );
 }
@@ -67,9 +60,9 @@ $count = count( $accordions[ $id ]['data'] );
 					</td>
 					<td>
 						<h3><?php _e( 'Headline', 'mpcx-accordion' ); ?></h3>
-						<input type="text" id="headline_<?php echo $key; ?>" name="headline[<?php echo $key; ?>]" data-type="headline" data-position="<?php echo $key; ?>" value="<?php echo esc_attr( $data['headline'] ); ?>"/>
+						<input type="text" name="headline[]" data-type="headline" data-position="<?php echo $key; ?>" value="<?php echo esc_attr( $data['headline'] ); ?>"/>
 						<h3><?php _e( 'Text', 'mpcx-accordion' ); ?></h3>
-						<textarea id="text_<?php echo $key; ?>" name="text[<?php echo $key; ?>]" rows="10" data-type="text" data-position="<?php echo $key; ?>"><?php echo esc_textarea( $data['text'] ); ?></textarea>
+						<textarea name="text[]" rows="10" data-type="text" data-position="<?php echo $key; ?>"><?php echo esc_textarea( $data['text'] ); ?></textarea>
 					</td>
 				</tr>
 				<?php $i ++; ?>
@@ -83,14 +76,13 @@ $count = count( $accordions[ $id ]['data'] );
 					</td>
 					<td>
 						<h3><?php _e( 'Headline', 'mpcx-accordion' ); ?></h3>
-						<input type="text" id="headline_new" name="headline[-1]" value=""/>
+						<input type="text" name="headline[]" value=""/>
 						<h3><?php _e( 'Text', 'mpcx-accordion' ); ?></h3>
-						<textarea id="text_new" name="text[-1]" rows="10"></textarea>
+						<textarea name="text[]" rows="10"></textarea>
 					</td>
 				</tr>
 			<?php endif; ?>
 		</table>
-		<input type="hidden" name="count" value="<?php echo $count; ?>">
 		<?php if ( $update_index ): ?>
 			<input type="hidden" name="index" value="<?php echo $id; ?>">
 		<?php endif; ?>
