@@ -74,7 +74,7 @@ $count = count( $accordions[ $id ]['data'] );
 				</tr>
 				<?php $i ++; ?>
 			<?php endforeach; ?>
-			<?php if ( $count === 0 || isset($_GET['add']) ) : ?>
+			<?php if ( $count === 0 ) : ?>
 				<tr>
 					<td>
 						<h2>
