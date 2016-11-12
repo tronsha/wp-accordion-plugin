@@ -2,6 +2,14 @@
     cursor: pointer;
 }
 
+.accordion table tr:first-child span[data-direction="up"] {
+    display: none;
+}
+
+.accordion table tr:last-child span[data-direction="down"] {
+    display: none;
+}
+
 .accordion .wp-list-table tr td:last-child {
     width: 60px;
 }

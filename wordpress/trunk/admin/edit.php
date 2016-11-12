@@ -44,25 +44,19 @@ $count = count( $accordions[ $id ]['data'] );
 		<table class="form-table">
 			<?php $i = 1; ?>
 			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
-				<tr>
+				<tr data-position="<?php echo $key; ?>">
 					<td>
 						<h2>
 							<?php echo $i; ?>.)
-							<?php if ( $count >= 2 ) : ?>
-								<?php if ( $i !== 1 ) : ?>
-									<span class="dashicons dashicons-arrow-up pointer" data-move="up" data-position="<?php echo $key; ?>"></span>
-								<?php endif; ?>
-								<?php if ( $i !== $count ) : ?>
-									<span class="dashicons dashicons-arrow-down pointer" data-move="down" data-position="<?php echo $key; ?>"></span>
-								<?php endif; ?>
-							<?php endif; ?>
+							<span class="dashicons dashicons-arrow-up pointer" data-direction="up"></span>
+							<span class="dashicons dashicons-arrow-down pointer" data-direction="down"></span>
 						</h2>
 					</td>
 					<td>
 						<h3><?php _e( 'Headline', 'mpcx-accordion' ); ?></h3>
-						<input type="text" name="headline[]" data-type="headline" data-position="<?php echo $key; ?>" value="<?php echo esc_attr( $data['headline'] ); ?>"/>
+						<input type="text" name="headline[]" data-type="headline" value="<?php echo esc_attr( $data['headline'] ); ?>"/>
 						<h3><?php _e( 'Text', 'mpcx-accordion' ); ?></h3>
-						<textarea name="text[]" rows="10" data-type="text" data-position="<?php echo $key; ?>"><?php echo esc_textarea( $data['text'] ); ?></textarea>
+						<textarea name="text[]" rows="10" data-type="text"><?php echo esc_textarea( $data['text'] ); ?></textarea>
 					</td>
 				</tr>
 				<?php $i ++; ?>

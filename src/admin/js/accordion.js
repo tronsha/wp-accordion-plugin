@@ -1,12 +1,12 @@
 jQuery(document).ready(function () {
 
-    jQuery('[data-move="down"]').click(function() {
-        var position = jQuery(this).data('position');
+    jQuery('[data-direction="down"]').click(function() {
+        var position = jQuery(this).parents('tr').data('position');
         move(position, position + 1);
     });
 
-    jQuery('[data-move="up"]').click(function() {
-        var position = jQuery(this).data('position');
+    jQuery('[data-direction="up"]').click(function() {
+        var position = jQuery(this).parents('tr').data('position');
         move(position, position - 1);
     });
 
@@ -26,13 +26,13 @@ function move(from, to) {
 
     var tmpHeadline, tmpText;
 
-    tmpHeadline = jQuery('[data-type="headline"][data-position="' + to + '"]').val();
-    tmpText = jQuery('[data-type="text"][data-position="' + to + '"]').val();
+    tmpHeadline = jQuery('[data-position="' + to + '"] [data-type="headline"]').val();
+    tmpText = jQuery('[data-position="' + to + '"] [data-type="text"]').val();
 
-    jQuery('[data-type="headline"][data-position="' + to + '"]').val(jQuery('[data-type="headline"][data-position="' + from + '"]').val());
-    jQuery('[data-type="text"][data-position="' + to + '"]').val(jQuery('[data-type="text"][data-position="' + from + '"]').val());
+    jQuery('[data-position="' + to + '"] [data-type="headline"]').val(jQuery('[data-position="' + from + '"] [data-type="headline"]').val());
+    jQuery('[data-position="' + to + '"] [data-type="text"]').val(jQuery('[data-position="' + from + '"] [data-type="text"]').val());
 
-    jQuery('[data-type="headline"][data-position="' + from + '"]').val(tmpHeadline);
-    jQuery('[data-type="text"][data-position="' + from + '"]').val(tmpText);
+    jQuery('[data-position="' + from + '"] [data-type="headline"]').val(tmpHeadline);
+    jQuery('[data-position="' + from + '"] [data-type="text"]').val(tmpText);
 
 }
