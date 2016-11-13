@@ -26,13 +26,18 @@ function move(from, to) {
 
     var tmpHeadline, tmpText;
 
-    tmpHeadline = jQuery('[data-position="' + to + '"] [data-type="headline"]').val();
-    tmpText = jQuery('[data-position="' + to + '"] [data-type="text"]').val();
+    var selectorHeadlineFrom = jQuery('[data-position="' + from + '"] [data-type="headline"]');
+    var selectorHeadlineTo = jQuery('[data-position="' + to + '"] [data-type="headline"]');
+    var selectorTextFrom = jQuery('[data-position="' + from + '"] [data-type="text"]');
+    var selectorTextTo = jQuery('[data-position="' + to + '"] [data-type="text"]');
 
-    jQuery('[data-position="' + to + '"] [data-type="headline"]').val(jQuery('[data-position="' + from + '"] [data-type="headline"]').val());
-    jQuery('[data-position="' + to + '"] [data-type="text"]').val(jQuery('[data-position="' + from + '"] [data-type="text"]').val());
+    tmpHeadline = selectorHeadlineTo.val();
+    tmpText = selectorTextTo.val();
 
-    jQuery('[data-position="' + from + '"] [data-type="headline"]').val(tmpHeadline);
-    jQuery('[data-position="' + from + '"] [data-type="text"]').val(tmpText);
+    selectorHeadlineTo.val(selectorHeadlineFrom.val());
+    selectorTextTo.val(selectorTextFrom.val());
+
+    selectorHeadlineFrom.val(tmpHeadline);
+    selectorTextFrom.val(tmpText);
 
 }
