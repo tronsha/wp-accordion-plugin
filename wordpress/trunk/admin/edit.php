@@ -44,7 +44,7 @@ $count = count( $accordions[ $id ]['data'] );
 		<table class="form-table">
 			<?php $i = 1; ?>
 			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
-				<tr data-position="<?php echo $key; ?>">
+				<tr>
 					<td>
 						<h2>
 							<?php echo $i; ?>.)
