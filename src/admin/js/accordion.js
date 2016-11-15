@@ -3,24 +3,34 @@ jQuery(document).ready(function () {
     setDataPosition();
 
     jQuery('input[type="text"], textarea').bind('change keyup', function () {
-        jQuery(window).bind('beforeunload', function () {
-            return '';
-        });
+        bindBeforeunload();
     });
 
     jQuery('input[type="submit"]').bind('click', function () {
-        jQuery(window).unbind('beforeunload');
+        unbindBeforeunload();
     });
 
     jQuery('[data-direction="down"]').bind('click', function () {
+        bindBeforeunload();
         moveDown(jQuery(this).parents('tr').data('position'));
     });
 
     jQuery('[data-direction="up"]').bind('click', function () {
+        bindBeforeunload();
         moveUp(jQuery(this).parents('tr').data('position'));
     });
 
 });
+
+function bindBeforeunload() {
+    jQuery(window).bind('beforeunload', function () {
+        return '';
+    });
+}
+
+function unbindBeforeunload() {
+    jQuery(window).unbind('beforeunload');
+}
 
 function move(from, to) {
     var selectorHeadlineFrom = jQuery('[data-position="' + from + '"] [data-type="headline"]');
