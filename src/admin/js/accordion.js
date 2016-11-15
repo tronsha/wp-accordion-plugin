@@ -1,6 +1,6 @@
 jQuery(document).ready(function () {
 
-    setDataPosition();
+    updateOutput();
 
     jQuery('input[type="text"], textarea').bind('change keyup', function () {
         bindBeforeunload();
@@ -11,13 +11,13 @@ jQuery(document).ready(function () {
     });
 
     jQuery('[data-direction="down"]').bind('click', function () {
+        moveDown(jQuery(this).parents('table').data('position'));
         bindBeforeunload();
-        moveDown(jQuery(this).parents('tr').data('position'));
     });
 
     jQuery('[data-direction="up"]').bind('click', function () {
+        moveUp(jQuery(this).parents('table').data('position'));
         bindBeforeunload();
-        moveUp(jQuery(this).parents('tr').data('position'));
     });
 
 });
@@ -53,10 +53,22 @@ function moveDown(position) {
     move(position, position + 1);
 }
 
-function setDataPosition() {
-    var positionCounter = 0;
-    jQuery('.accordion table.form-table tr').each(function () {
-        jQuery(this).attr('data-position', positionCounter);
+function updateOutput() {
+    var positionCounter = 1;
+    var $formtable = jQuery('table.form-table');
+    $formtable.each(function () {
+        var $this = jQuery(this);
+        $this.attr('data-position', positionCounter);
+        if (positionCounter === 1) {
+            $this.find('[data-direction="up"]').css('display', 'none');
+        } else {
+            $this.find('[data-direction="up"]').css('display', '');
+        }
+        if (positionCounter === $formtable.length) {
+            $this.find('[data-direction="down"]').css('display', 'none');
+        } else {
+            $this.find('[data-direction="down"]').css('display', '');
+        }
         positionCounter++;
     });
 }

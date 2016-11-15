@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 $post_type_object = get_post_type_object( 'page' );
 
 ?>
-<div class="wrap accordion">
+<div class="wrap">
 	<h1>
 		Accordion
 		<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=0' ); ?>" class="page-title-action"><?php echo esc_html( $post_type_object->labels->add_new ); ?></a>
@@ -24,7 +24,7 @@ $post_type_object = get_post_type_object( 'page' );
 			<td>
 				<strong><?php _e( 'Shortcode', 'mpcx-accordion' ); ?></strong>
 			</td>
-			<td>
+			<td style="width: 60px;">
 				&nbsp;
 			</td>
 		</tr>
@@ -43,7 +43,7 @@ $post_type_object = get_post_type_object( 'page' );
 				<td>
 					[accordion id="<?php echo $key; ?>" /]
 				</td>
-				<td>
+				<td style="width: 60px;">
 					<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $key ); ?>">
 						<span class="dashicons dashicons-edit"></span>
 					</a>
