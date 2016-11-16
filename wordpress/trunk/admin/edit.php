@@ -24,6 +24,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 	$accordions[ $id ]['data']  = $data;
 	$accordions[ $id ]['title'] = $_POST['title'];
 	update_option( 'mpcx_accordion', json_encode( $accordions ) );
+	echo '<div id="message" class="updated notice is-dismissible"><p>' . __( 'The changes are saved.' ) . '</p></div>';
 }
 
 $count = count( $accordions[ $id ]['data'] );
