@@ -50,7 +50,7 @@ $count = count( $accordions[ $id ]['data'] );
 				<tr>
 					<th colspan="2">
 						<h2>
-							<?php echo $i; ?>.)
+							<strong><?php echo $i; ?>.)</strong>
 							<span class="dashicons dashicons-arrow-up pointer" data-direction="up" style="display: none;"></span>
 							<span class="dashicons dashicons-arrow-down pointer" data-direction="down" style="display: none;"></span>
 						</h2>
@@ -82,7 +82,7 @@ $count = count( $accordions[ $id ]['data'] );
 		<tr>
 			<th colspan="2">
 				<h2>
-					dummy.)
+					<strong></strong>
 					<span class="dashicons dashicons-arrow-up pointer" data-direction="up" style="display: none;"></span>
 					<span class="dashicons dashicons-arrow-down pointer" data-direction="down" style="display: none;"></span>
 				</h2>
