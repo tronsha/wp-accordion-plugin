@@ -35,6 +35,9 @@ $count = count( $accordions[ $id ]['data'] );
 		Accordion
 	</h1>
 	<form method="post" action="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $id ); ?>">
+		<?php if ( $update_index ): ?>
+			<input type="hidden" name="index" value="<?php echo $id; ?>">
+		<?php endif; ?>
 		<div id="titlediv">
 			<div id="titlewrap">
 				<label class="screen-reader-text" id="title-prompt-text" for="title"><?php _e( 'Title', 'mpcx-accordion' ); ?></label>
@@ -48,8 +51,8 @@ $count = count( $accordions[ $id ]['data'] );
 					<th colspan="2">
 						<h2>
 							<?php echo $i; ?>.)
-							<span class="dashicons dashicons-arrow-up pointer" data-direction="up"></span>
-							<span class="dashicons dashicons-arrow-down pointer" data-direction="down"></span>
+							<span class="dashicons dashicons-arrow-up pointer" data-direction="up" style="display: none;"></span>
+							<span class="dashicons dashicons-arrow-down pointer" data-direction="down" style="display: none;"></span>
 						</h2>
 					</th>
 				</tr>
@@ -72,9 +75,34 @@ $count = count( $accordions[ $id ]['data'] );
 			</table>
 			<?php $i ++; ?>
 		<?php endforeach; ?>
-		<?php if ( $update_index ): ?>
-			<input type="hidden" name="index" value="<?php echo $id; ?>">
-		<?php endif; ?>
+		<input id="add_entries" type="button" class="button button-primary" value="+">
 		<?php submit_button(); ?>
 	</form>
+	<table class="form-table" style="display: none;">
+		<tr>
+			<th colspan="2">
+				<h2>
+					dummy.)
+					<span class="dashicons dashicons-arrow-up pointer" data-direction="up" style="display: none;"></span>
+					<span class="dashicons dashicons-arrow-down pointer" data-direction="down" style="display: none;"></span>
+				</h2>
+			</th>
+		</tr>
+		<tr class="form-field">
+			<th scope="row">
+				<label for="headline_dummy"><?php _e( 'Headline', 'mpcx-accordion' ); ?></label>
+			</th>
+			<td>
+				<input type="text" id="headline_dummy" name="headline[]" data-type="headline" value=""/>
+			</td>
+		</tr>
+		<tr class="form-field">
+			<th scope="row">
+				<label for="text_dummy"><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
+			</th>
+			<td>
+				<textarea  id="text_dummy" name="text[]" rows="10" data-type="text"></textarea>
+			</td>
+		</tr>
+	</table>
 </div>

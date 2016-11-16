@@ -2,21 +2,27 @@ jQuery(document).ready(function () {
 
     updateAccordionEditOutput();
 
-    jQuery('input[type="text"], textarea').bind('change keyup', function () {
+    jQuery('body').on('change keyup', 'input[type="text"], textarea', function () {
         bindAccordionBeforeunload();
     });
 
-    jQuery('input[type="submit"]').bind('click', function () {
+    jQuery('body').on('click', 'input[type="submit"]', function () {
         unbindAccordionBeforeunload();
     });
 
-    jQuery('[data-direction="down"]').bind('click', function () {
+    jQuery('body').on('click', '[data-direction="down"]', function () {
         moveAccordionDataDown(jQuery(this).parents('table').data('position'));
         bindAccordionBeforeunload();
     });
 
-    jQuery('[data-direction="up"]').bind('click', function () {
+    jQuery('body').on('click', '[data-direction="up"]', function () {
+        console.log('top');
         moveAccordionDataUp(jQuery(this).parents('table').data('position'));
+        bindAccordionBeforeunload();
+    });
+
+    jQuery('#add_entries').bind('click', function () {
+        addAccordionEntries();
         bindAccordionBeforeunload();
     });
 
@@ -55,7 +61,7 @@ function moveAccordionDataDown(position) {
 
 function updateAccordionEditOutput() {
     var positionCounter = 1;
-    var selectorFormTable = jQuery('table.form-table');
+    var selectorFormTable = jQuery('table.form-table:visible');
     selectorFormTable.each(function () {
         var $this = jQuery(this);
         $this.attr('data-position', positionCounter);
@@ -71,4 +77,17 @@ function updateAccordionEditOutput() {
         }
         positionCounter++;
     });
+}
+
+function addAccordionEntries() {
+    var blank = jQuery('table.form-table:hidden').clone();
+    var count = jQuery('table.form-table:visible').length;
+    count += 1;
+    blank.html(blank.html().replace('dummy', count)).css('display', '');
+    blank.insertBefore(jQuery('#add_entries'));
+    jQuery('#headline_dummy:visible').attr('id', 'headline_' + count);
+    jQuery('[for="headline_dummy"]:visible').attr('for', 'headline_' + count);
+    jQuery('#text_dummy:visible').attr('id', 'text_' + count);
+    jQuery('[for="text_dummy"]:visible').attr('for', 'text_' + count);
+    updateAccordionEditOutput();
 }
