@@ -84,7 +84,7 @@ $count = count( $accordions[ $id ]['data'] );
 			<th colspan="2">
 				<h2>
 					<strong></strong>
-					<span class="dashicons dashicons-trash button button-primary" data-direction="up"></span>
+					<span class="dashicons dashicons-trash button button-primary" data-type="delete"></span>
 					<span class="dashicons dashicons-arrow-up button button-primary" data-direction="up" style="display: none;"></span>
 					<span class="dashicons dashicons-arrow-down button button-primary" data-direction="down" style="display: none;"></span>
 				</h2>
