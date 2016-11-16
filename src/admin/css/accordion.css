@@ -1,3 +1,11 @@
 .pointer {
     cursor: pointer;
 }
+
+.form-table h2 strong {
+    margin-right: 20px;
+}
+
+span.button {
+    width: 50px;
+}

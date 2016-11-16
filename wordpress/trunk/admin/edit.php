@@ -51,8 +51,9 @@ $count = count( $accordions[ $id ]['data'] );
 					<th colspan="2">
 						<h2>
 							<strong><?php echo $i; ?>.)</strong>
-							<span class="dashicons dashicons-arrow-up pointer" data-direction="up" style="display: none;"></span>
-							<span class="dashicons dashicons-arrow-down pointer" data-direction="down" style="display: none;"></span>
+							<span class="dashicons dashicons-trash button button-primary" data-type="delete"></span>
+							<span class="dashicons dashicons-arrow-up button button-primary" data-direction="up" style="display: none;"></span>
+							<span class="dashicons dashicons-arrow-down button button-primary" data-direction="down" style="display: none;"></span>
 						</h2>
 					</th>
 				</tr>
@@ -75,7 +76,7 @@ $count = count( $accordions[ $id ]['data'] );
 			</table>
 			<?php $i ++; ?>
 		<?php endforeach; ?>
-		<input id="add_entries" type="button" class="button button-primary" value="+">
+		<span class="dashicons dashicons-plus button button-primary" data-type="add"></span>
 		<?php submit_button(); ?>
 	</form>
 	<table class="form-table" style="display: none;">
@@ -83,8 +84,9 @@ $count = count( $accordions[ $id ]['data'] );
 			<th colspan="2">
 				<h2>
 					<strong></strong>
-					<span class="dashicons dashicons-arrow-up pointer" data-direction="up" style="display: none;"></span>
-					<span class="dashicons dashicons-arrow-down pointer" data-direction="down" style="display: none;"></span>
+					<span class="dashicons dashicons-trash button button-primary" data-direction="up"></span>
+					<span class="dashicons dashicons-arrow-up button button-primary" data-direction="up" style="display: none;"></span>
+					<span class="dashicons dashicons-arrow-down button button-primary" data-direction="down" style="display: none;"></span>
 				</h2>
 			</th>
 		</tr>

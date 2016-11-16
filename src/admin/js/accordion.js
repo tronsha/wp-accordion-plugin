@@ -16,13 +16,19 @@ jQuery(document).ready(function () {
     });
 
     jQuery('body').on('click', '[data-direction="up"]', function () {
-        console.log('top');
         moveAccordionDataUp(jQuery(this).parents('table').data('position'));
         bindAccordionBeforeunload();
     });
 
-    jQuery('#add_entries').bind('click', function () {
-        addAccordionEntries();
+    jQuery('body').on('click', '[data-type="delete"]', function () {
+        jQuery(this).parents('table').remove();
+        updateAccordionEditOutput();
+        bindAccordionBeforeunload();
+    });
+
+    jQuery('body').on('click', '[data-type="add"]', function () {
+        jQuery('table.form-table:hidden').clone().css('display', '').insertBefore(jQuery('[data-type="add"]'));
+        updateAccordionEditOutput();
         bindAccordionBeforeunload();
     });
 
@@ -74,9 +80,4 @@ function updateAccordionEditOutput() {
         $this.find('tr:nth-child(3) textarea').attr('id', 'text_' + positionCounter);
         positionCounter++;
     });
-}
-
-function addAccordionEntries() {
-    jQuery('table.form-table:hidden').clone().css('display', '').insertBefore(jQuery('#add_entries'));
-    updateAccordionEditOutput();
 }
