@@ -44,11 +44,11 @@ $post_type_object = get_post_type_object( 'page' );
 					[accordion id="<?php echo $key; ?>" /]
 				</td>
 				<td>
-					<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $key ); ?>">
+					<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $key ); ?>" title="<?php _e( 'Edit', 'mpcx-accordion' ); ?>">
 						<span class="dashicons dashicons-edit"></span>
 					</a>
 					&#160;
-					<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;delete=' . $key ); ?>" onclick="return confirm('<?php printf( __( 'Are you sure you want to delete %s?', 'mpcx-accordion' ), $accordion['title'] ); ?>');">
+					<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;delete=' . $key ); ?>" title="<?php _e( 'Delete', 'mpcx-accordion' ); ?>" onclick="return confirm('<?php printf( __( 'Are you sure you want to delete %s?', 'mpcx-accordion' ), $accordion['title'] ); ?>');">
 						<span class="dashicons dashicons-trash"></span>
 					</a>
 				</td>
