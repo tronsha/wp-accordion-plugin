@@ -70,7 +70,7 @@ $count = count( $accordions[ $id ]['data'] );
 						<label for="text_<?php echo $i; ?>"><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
 					</th>
 					<td>
-						<textarea  id="text_<?php echo $i; ?>" name="text[]" rows="10" data-type="text"><?php echo esc_textarea( $data['text'] ); ?></textarea>
+						<textarea id="text_<?php echo $i; ?>" name="text[]" rows="10" data-type="text"><?php echo esc_textarea( $data['text'] ); ?></textarea>
 					</td>
 				</tr>
 			</table>
@@ -92,18 +92,18 @@ $count = count( $accordions[ $id ]['data'] );
 		</tr>
 		<tr class="form-field">
 			<th scope="row">
-				<label for="headline_dummy"><?php _e( 'Headline', 'mpcx-accordion' ); ?></label>
+				<label><?php _e( 'Headline', 'mpcx-accordion' ); ?></label>
 			</th>
 			<td>
-				<input type="text" id="headline_dummy" name="headline[]" data-type="headline" value=""/>
+				<input type="text" name="headline[]" data-type="headline" value=""/>
 			</td>
 		</tr>
 		<tr class="form-field">
 			<th scope="row">
-				<label for="text_dummy"><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
+				<label><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
 			</th>
 			<td>
-				<textarea  id="text_dummy" name="text[]" rows="10" data-type="text"></textarea>
+				<textarea name="text[]" rows="10" data-type="text"></textarea>
 			</td>
 		</tr>
 	</table>
