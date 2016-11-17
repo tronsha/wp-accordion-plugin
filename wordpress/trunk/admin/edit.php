@@ -30,8 +30,8 @@ if ( isset( $_POST['submit'] ) === true ) {
 $count = count( $accordions[ $id ]['data'] );
 
 ?>
-<div class="wrap">
-	<h1 style="display: none;">
+<div class="wrap accordion-edit">
+	<h1>
 		Accordion
 	</h1>
 	<form method="post" action="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $id ); ?>">
