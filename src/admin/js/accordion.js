@@ -62,7 +62,6 @@ function unbindAccordionBeforeunload() {
 }
 
 function moveAccordionData(from, to) {
-    console.log(from, to);
     var selectorHeadlineFrom = jQuery('[data-position="' + from + '"] [data-type="headline"]');
     var selectorHeadlineTo = jQuery('[data-position="' + to + '"] [data-type="headline"]');
     var selectorTextFrom = jQuery('[data-position="' + from + '"] [data-type="text"]');
