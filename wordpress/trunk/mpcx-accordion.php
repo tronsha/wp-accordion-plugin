@@ -63,7 +63,7 @@ if ( ! is_admin() ) {
 				$content = do_shortcode( $content );
 			}
 
-			return '<div class="accordion">' . $content . '</div>';
+			return '<div class="accordion"' . (intval($att['id']) > 0 ? ' id="accordion-' . $att['id'] . '"' : '') . '>' . $content . '</div>';
 		}
 	);
 
