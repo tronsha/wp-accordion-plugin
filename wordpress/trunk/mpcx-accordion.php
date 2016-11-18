@@ -23,7 +23,7 @@ load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FIL
 register_activation_hook(
 	__FILE__,
 	function () {
-		add_option( 'mpcx_accordion', json_encode([0 => ['version' => '1.2.0']]) );
+		add_option( 'mpcx_accordion', json_encode( [ 0 => [ 'version' => '1.2.0' ] ] ) );
 	}
 );
 
@@ -63,7 +63,7 @@ if ( ! is_admin() ) {
 				$content = do_shortcode( $content );
 			}
 
-			return '<div class="accordion"' . (intval($att['id']) > 0 ? ' id="accordion-' . $att['id'] . '"' : '') . '>' . $content . '</div>';
+			return '<div class="accordion"' . ( intval( $att['id'] ) > 0 ? ' id="accordion-' . $att['id'] . '"' : '' ) . '>' . $content . '</div>';
 		}
 	);
 
@@ -74,13 +74,13 @@ add_action(
 	function () {
 		wp_register_style(
 			'mpcx-accordion',
-			plugin_dir_url( __FILE__ ) . (is_admin() ? 'admin' : 'public') . '/css/accordion.min.css',
+			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/css/accordion.min.css',
 			array(),
 			'1.2.0'
 		);
 		wp_register_script(
 			'mpcx-accordion',
-			plugin_dir_url( __FILE__ ) . (is_admin() ? 'admin' : 'public') . '/js/accordion.min.js',
+			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/js/accordion.min.js',
 			array( 'jquery' ),
 			'1.2.0'
 		);
