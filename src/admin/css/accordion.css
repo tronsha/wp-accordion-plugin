@@ -2,8 +2,8 @@
     margin: 10px auto;
 }
 
-.accordion-list .wp-list-table th.column-edit,
-.accordion-list .wp-list-table th.column-delete {
+.accordion-list .wp-list-table .column-edit,
+.accordion-list .wp-list-table .column-delete {
     width: 20px;
 }
 
