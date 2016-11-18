@@ -1,5 +1,10 @@
-.accordion-list .wp-list-table td:last-child {
-    width: 60px;
+.accordion-list .wp-list-table {
+    margin: 10px auto;
+}
+
+.accordion-list .wp-list-table th.column-edit,
+.accordion-list .wp-list-table th.column-delete {
+    width: 20px;
 }
 
 .accordion-edit h1 {

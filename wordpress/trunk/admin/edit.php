@@ -10,11 +10,14 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 $id = (int) $_GET['edit'];
 
 if ( $id === 0 ) {
-	$id           = 1 + (int) $accordions[0]['index'];
-	$update_index = true;
+	$id  = 1 + (int) $accordions[0]['index'];
+	$new = true;
 }
 
 if ( isset( $_POST['submit'] ) === true ) {
+	if ( isset( $_POST['index'] ) === true ) {
+		$accordions[0]['index'] = $_POST['index'];
+	}
 	foreach ( $_POST['headline'] as $key => $headline ) {
 		$data[ $key ]['headline'] = $headline;
 	}
@@ -27,15 +30,13 @@ if ( isset( $_POST['submit'] ) === true ) {
 	echo '<div id="message" class="updated notice is-dismissible"><p>' . __( 'The changes are saved.', 'mpcx-accordion' ) . '</p></div>';
 }
 
-$count = count( $accordions[ $id ]['data'] );
-
 ?>
 <div class="wrap accordion-edit">
 	<h1>
 		Accordion
 	</h1>
 	<form method="post" action="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $id ); ?>">
-		<?php if ( $update_index ): ?>
+		<?php if ( $new === true ): ?>
 			<input type="hidden" name="index" value="<?php echo $id; ?>">
 		<?php endif; ?>
 		<div id="titlediv">
