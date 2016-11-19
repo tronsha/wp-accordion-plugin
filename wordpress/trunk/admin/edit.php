@@ -52,9 +52,9 @@ if ( isset( $_POST['submit'] ) === true ) {
 					<th colspan="2">
 						<h2>
 							<strong><?php echo $i; ?>.)</strong>
-							<span class="dashicons dashicons-trash button button-primary" data-button="delete"></span>
-							<span class="dashicons dashicons-arrow-up button button-primary" data-button="up" style="display: none;"></span>
-							<span class="dashicons dashicons-arrow-down button button-primary" data-button="down" style="display: none;"></span>
+							<span class="button button-primary" data-button="delete"><span class="dashicons dashicons-trash"></span></span>
+							<span class="button button-primary" data-button="up" style="display: none;"><span class="dashicons dashicons-arrow-up"></span></span>
+							<span class="button button-primary" data-button="down" style="display: none;"><span class="dashicons dashicons-arrow-down"></span></span>
 						</h2>
 					</th>
 				</tr>
@@ -77,7 +77,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 			</table>
 			<?php $i ++; ?>
 		<?php endforeach; ?>
-		<span class="dashicons dashicons-plus button button-primary" data-button="add"></span>
+		<span class="button button-primary" data-button="add"><span class="dashicons dashicons-plus"></span></span>
 		<?php submit_button(); ?>
 	</form>
 	<table class="form-table" style="display: none;">
@@ -85,9 +85,9 @@ if ( isset( $_POST['submit'] ) === true ) {
 			<th colspan="2">
 				<h2>
 					<strong></strong>
-					<span class="dashicons dashicons-trash button button-primary" data-button="delete"></span>
-					<span class="dashicons dashicons-arrow-up button button-primary" data-button="up" style="display: none;"></span>
-					<span class="dashicons dashicons-arrow-down button button-primary" data-button="down" style="display: none;"></span>
+					<span class="button button-primary" data-button="delete"><span class="dashicons dashicons-trash"></span></span>
+					<span class="button button-primary" data-button="up" style="display: none;"><span class="dashicons dashicons-arrow-up"></span></span>
+					<span class="button button-primary" data-button="down" style="display: none;"><span class="dashicons dashicons-arrow-down"></span></span>
 				</h2>
 			</th>
 		</tr>

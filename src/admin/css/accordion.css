@@ -27,10 +27,16 @@
     margin-top: 10px !important;
 }
 
-.accordion-edit [data-button="add"],
-.accordion-edit [data-button="delete"],
-.accordion-edit [data-button="up"],
-.accordion-edit [data-button="down"] {
-    font-size: 20px !important;
-    width: 50px;
+.accordion-edit .button > .dashicons:before,
+.accordion-edit .button > .dashicons {
+    line-height: 26px;
+}
+
+@media screen and (max-width: 782px) {
+
+    .accordion-edit .button > .dashicons:before,
+    .accordion-edit .button > .dashicons {
+        line-height: normal;
+    }
+
 }
