@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
     });
     $('.accordion').children('h2, h3, h4, h5, h6, strong').each(function () {
         var $this = $(this);
-        if ('#' + $this.attr('id') == window.location.hash) {
+        if ('#' + $this.attr('data-hash') == window.location.hash) {
             $this.prepend('<i class="fa fa-caret-down"></i>');
             $this.next('div').addClass('open').css('height', 'auto');
         } else {
@@ -14,8 +14,8 @@ jQuery(document).ready(function () {
         $this.bind('click', function () {
             var $div = $this.next('div');
             if ($div.hasClass('open') === false) {
-                if ($this.attr('id') != undefined) {
-                    window.location.hash = $this.attr('id');
+                if ($this.attr('data-hash') != undefined) {
+                    window.location.hash = $this.attr('data-hash');
                 }
                 $(this).parent('.accordion').children('div.open').each(function () {
                     $(this).animate({height: 0}, 500);
@@ -42,7 +42,7 @@ jQuery(document).ready(function () {
                 });
                 $this.find('.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
             } else {
-                if ($this.attr('id') != undefined) {
+                if ($this.attr('data-hash') != undefined) {
                     window.location.hash = '!';
                 }
                 $div.removeClass('open');

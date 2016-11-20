@@ -57,7 +57,7 @@ if ( ! is_admin() ) {
 				$accordion = json_decode( get_option( 'mpcx_accordion' ), true );
 				$content   = '';
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {
-					$content .= '<h3>' . $data['headline'] . '</h3><div>' . $data['text'] . '</div>';
+					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . $data['headline'] . '</h3><div>' . $data['text'] . '</div>';
 				}
 			} else {
 				$content = do_shortcode( $content );
