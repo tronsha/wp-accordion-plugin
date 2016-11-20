@@ -1,7 +1,7 @@
 .accordion > h2,
-.accordion > h3, 
-.accordion > h4, 
-.accordion > h5, 
+.accordion > h3,
+.accordion > h4,
+.accordion > h5,
 .accordion > h6,
 .accordion > strong {
     background-color: #000000;
@@ -9,7 +9,8 @@
     color: #FFFFFF;
     cursor: pointer;
     display: block;
-    margin: 4px 0 0 0!important;
+    line-height: 1 !important;
+    margin: 4px 0 0 0 !important;
     max-width: 100%;
     padding: 4px 8px;
 }
