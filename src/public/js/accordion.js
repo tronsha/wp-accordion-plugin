@@ -6,10 +6,10 @@ jQuery(document).ready(function () {
     $('.accordion').children('h2, h3, h4, h5, h6, strong').each(function () {
         var $this = $(this);
         if ('#' + $this.attr('data-hash') == window.location.hash) {
-            $this.prepend('<i class="fa fa-caret-down"></i>');
+            $this.prepend('<span class="arrow-icons dashicons-arrow-down"></span>');
             $this.next('div').addClass('open').css('height', 'auto');
         } else {
-            $this.prepend('<i class="fa fa-caret-right"></i>');
+            $this.prepend('<span class="arrow-icons dashicons-arrow-right"></span>');
         }
         $this.bind('click', function () {
             var $div = $this.next('div');
@@ -21,8 +21,8 @@ jQuery(document).ready(function () {
                     $(this).animate({height: 0}, 500);
                     $(this).removeClass('open');
                 });
-                $(this).parent('.accordion').find('.fa-caret-down').each(function () {
-                    $(this).removeClass('fa-caret-down').addClass('fa-caret-right');
+                $(this).parent('.accordion').find('.dashicons-arrow-down').each(function () {
+                    $(this).removeClass('dashicons-arrow-down').addClass('dashicons-arrow-right');
                 });
                 $div.css('height', 'auto');
                 var autoHeight = $div.height();
@@ -40,14 +40,14 @@ jQuery(document).ready(function () {
                         }, 250);
                     }
                 });
-                $this.find('.fa').removeClass('fa-caret-right').addClass('fa-caret-down');
+                $this.find('.arrow-icons').removeClass('dashicons-arrow-right').addClass('dashicons-arrow-down');
             } else {
                 if ($this.attr('data-hash') != undefined) {
                     window.location.hash = '!';
                 }
                 $div.removeClass('open');
                 $div.animate({height: 0}, 500);
-                $this.find('.fa').removeClass('fa-caret-down').addClass('fa-caret-right');
+                $this.find('.arrow-icons').removeClass('dashicons-arrow-down').addClass('dashicons-arrow-right');
             }
         });
     });

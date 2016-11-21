@@ -15,8 +15,14 @@
     padding: 4px 8px;
 }
 
-.accordion > * > i.fa {
-    width: 16px;
+.accordion .arrow-icons {
+    font-family: dashicons;
+    font-size: 75%;
+    font-style: normal;
+    font-weight: 400;
+    margin-right: 2px;
+    text-align: center;
+    vertical-align: top;
 }
 
 .accordion > div {
