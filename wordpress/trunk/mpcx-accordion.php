@@ -84,6 +84,7 @@ add_action(
 			array( 'jquery' ),
 			'1.2.0'
 		);
+		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_style( 'mpcx-accordion' );
 		wp_enqueue_script( 'mpcx-accordion' );
 	}
