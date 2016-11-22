@@ -1,15 +1,14 @@
 jQuery(document).ready(function () {
     var $ = jQuery;
-    $('.accordion').children('div').each(function () {
-        $(this).css('height', $(this).hasClass('open') === true ? 'auto' : '0');
-    });
     $('.accordion').children('h2, h3, h4, h5, h6, strong').each(function () {
         var $this = $(this);
-        if ('#' + $this.attr('data-hash') == window.location.hash) {
+        var $div = $this.next('div');
+        if ('#' + $this.attr('data-hash') === window.location.hash || ($div.hasClass('open') === true && (window.location.hash === '' || window.location.hash === '#!'))) {
             $this.prepend('<span class="arrow-icons dashicons-arrow-down"></span>');
-            $this.next('div').addClass('open').css('height', 'auto');
+            $div.addClass('open').css('height', 'auto');
         } else {
             $this.prepend('<span class="arrow-icons dashicons-arrow-right"></span>');
+            $div.removeClass('open').css('height', '0');
         }
         $this.bind('click', function () {
             var $div = $this.next('div');
