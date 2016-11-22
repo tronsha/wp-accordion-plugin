@@ -40,7 +40,7 @@ $post_type_object = get_post_type_object( 'page' );
 			<tr>
 				<td class="column-title column-primary">
 					<strong>
-						<a class="row-title" href="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $key ); ?>"><?php echo $accordion['title']; ?></a>
+						<a class="row-title" href="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $key ); ?>"><?php echo esc_attr( $accordion['title'] ); ?></a>
 					</strong>
 					<button type="button" class="toggle-row"></button>
 				</td>
@@ -53,7 +53,7 @@ $post_type_object = get_post_type_object( 'page' );
 					</a>
 				</td>
 				<td class="column-delete" data-colname="<?php _e( 'Delete', 'mpcx-accordion' ); ?>">
-					<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;delete=' . $key ); ?>" title="<?php _e( 'Delete', 'mpcx-accordion' ); ?>" onclick="return confirm('<?php printf( __( 'Are you sure you want to delete %s?', 'mpcx-accordion' ), $accordion['title'] ); ?>');">
+					<a href="<?php echo admin_url( 'admin.php?page=accordion&amp;delete=' . $key ); ?>" title="<?php _e( 'Delete', 'mpcx-accordion' ); ?>" onclick="return confirm('<?php printf( __( 'Are you sure you want to delete %s?', 'mpcx-accordion' ), esc_js( str_replace( '\\', '\\\\', $accordion['title'] ) ) ); ?>');">
 						<span class="dashicons dashicons-trash"></span>
 					</a>
 				</td>

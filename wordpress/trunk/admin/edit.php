@@ -19,13 +19,13 @@ if ( isset( $_POST['submit'] ) === true ) {
 		$accordions[0]['index'] = $_POST['index'];
 	}
 	foreach ( $_POST['headline'] as $key => $headline ) {
-		$data[ $key ]['headline'] = $headline;
+		$data[ $key ]['headline'] = stripslashes( $headline );
 	}
 	foreach ( $_POST['text'] as $key => $text ) {
-		$data[ $key ]['text'] = $text;
+		$data[ $key ]['text'] = stripslashes( $text );
 	}
 	$accordions[ $id ]['data']  = $data;
-	$accordions[ $id ]['title'] = $_POST['title'];
+	$accordions[ $id ]['title'] = stripslashes( $_POST['title'] );
 	update_option( 'mpcx_accordion', json_encode( $accordions ) );
 	echo '<div id="message" class="updated notice is-dismissible"><p>' . __( 'The changes are saved.', 'mpcx-accordion' ) . '</p></div>';
 }
