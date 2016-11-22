@@ -50,7 +50,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 			</div>
 		</div>
 		<?php $i = 1; ?>
-		<?php if ( isset( $accordions[ $id ]['data'] ) === true && is_array($accordions[ $id ]['data']) === true ): ?>
+		<?php if ( isset( $accordions[ $id ]['data'] ) === true && is_array( $accordions[ $id ]['data'] ) === true ): ?>
 			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
 				<table class="form-table">
 					<tr>
