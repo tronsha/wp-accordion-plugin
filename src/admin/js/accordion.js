@@ -2,33 +2,33 @@ jQuery(document).ready(function () {
 
     updateAccordionEdit();
 
-    jQuery('body').on('click', '[data-button="add"]', function () {
+    jQuery('body').on('click', '.accordion-edit [data-button="add"]', function () {
         jQuery('table.form-table:hidden').clone().css('display', '').insertBefore(jQuery('[data-button="add"]'));
         updateAccordionEdit();
         bindAccordionBeforeunload();
     });
 
-    jQuery('body').on('click', '[data-button="delete"]', function () {
+    jQuery('body').on('click', '.accordion-edit [data-button="delete"]', function () {
         jQuery(this).parents('table').remove();
         updateAccordionEdit();
         bindAccordionBeforeunload();
     });
 
-    jQuery('body').on('click', '[data-button="down"]', function () {
+    jQuery('body').on('click', '.accordion-edit [data-button="down"]', function () {
         moveAccordionDataDown(parseInt(jQuery(this).parents('table').attr('data-position')));
         bindAccordionBeforeunload();
     });
 
-    jQuery('body').on('click', '[data-button="up"]', function () {
+    jQuery('body').on('click', '.accordion-edit [data-button="up"]', function () {
         moveAccordionDataUp(parseInt(jQuery(this).parents('table').attr('data-position')));
         bindAccordionBeforeunload();
     });
 
-    jQuery('body').on('change keyup', 'input[type="text"], textarea', function () {
+    jQuery('body').on('change keyup', '.accordion-edit input[type="text"], .accordion-edit textarea', function () {
         bindAccordionBeforeunload();
     });
 
-    jQuery('body').on('click', 'input[type="submit"]', function () {
+    jQuery('body').on('click', '.accordion-edit input[type="submit"]', function () {
         unbindAccordionBeforeunload();
     });
 
