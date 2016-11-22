@@ -18,11 +18,15 @@ if ( isset( $_POST['submit'] ) === true ) {
 	if ( isset( $_POST['index'] ) === true ) {
 		$accordions[0]['index'] = $_POST['index'];
 	}
-	foreach ( $_POST['headline'] as $key => $headline ) {
-		$data[ $key ]['headline'] = stripslashes( $headline );
+	if ( isset( $_POST['headline'] ) === true && is_array( $_POST['text'] ) === true ) {
+		foreach ( $_POST['headline'] as $key => $headline ) {
+			$data[ $key ]['headline'] = stripslashes( $headline );
+		}
 	}
-	foreach ( $_POST['text'] as $key => $text ) {
-		$data[ $key ]['text'] = stripslashes( $text );
+	if ( isset( $_POST['text'] ) === true && is_array( $_POST['text'] ) === true ) {
+		foreach ( $_POST['text'] as $key => $text ) {
+			$data[ $key ]['text'] = stripslashes( $text );
+		}
 	}
 	$accordions[ $id ]['data']  = $data;
 	$accordions[ $id ]['title'] = stripslashes( $_POST['title'] );
@@ -46,37 +50,39 @@ if ( isset( $_POST['submit'] ) === true ) {
 			</div>
 		</div>
 		<?php $i = 1; ?>
-		<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
-			<table class="form-table">
-				<tr>
-					<th colspan="2">
-						<h2>
-							<strong><?php echo $i; ?>.)</strong>
-							<span class="button button-primary" data-button="delete"><span class="dashicons dashicons-trash"></span></span>
-							<span class="button button-primary" data-button="up" style="display: none;"><span class="dashicons dashicons-arrow-up"></span></span>
-							<span class="button button-primary" data-button="down" style="display: none;"><span class="dashicons dashicons-arrow-down"></span></span>
-						</h2>
-					</th>
-				</tr>
-				<tr class="form-field">
-					<th scope="row">
-						<label for="headline_<?php echo $i; ?>"><?php _e( 'Headline', 'mpcx-accordion' ); ?></label>
-					</th>
-					<td>
-						<input type="text" id="headline_<?php echo $i; ?>" name="headline[]" data-type="headline" value="<?php echo esc_attr( $data['headline'] ); ?>"/>
-					</td>
-				</tr>
-				<tr class="form-field">
-					<th scope="row">
-						<label for="text_<?php echo $i; ?>"><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
-					</th>
-					<td>
-						<textarea id="text_<?php echo $i; ?>" name="text[]" rows="10" data-type="text"><?php echo esc_textarea( $data['text'] ); ?></textarea>
-					</td>
-				</tr>
-			</table>
-			<?php $i ++; ?>
-		<?php endforeach; ?>
+		<?php if ( isset( $accordions[ $id ]['data'] ) === true && is_array($accordions[ $id ]['data']) === true ): ?>
+			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
+				<table class="form-table">
+					<tr>
+						<th colspan="2">
+							<h2>
+								<strong><?php echo $i; ?>.)</strong>
+								<span class="button button-primary" data-button="delete"><span class="dashicons dashicons-trash"></span></span>
+								<span class="button button-primary" data-button="up" style="display: none;"><span class="dashicons dashicons-arrow-up"></span></span>
+								<span class="button button-primary" data-button="down" style="display: none;"><span class="dashicons dashicons-arrow-down"></span></span>
+							</h2>
+						</th>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
+							<label for="headline_<?php echo $i; ?>"><?php _e( 'Headline', 'mpcx-accordion' ); ?></label>
+						</th>
+						<td>
+							<input type="text" id="headline_<?php echo $i; ?>" name="headline[]" data-type="headline" value="<?php echo esc_attr( $data['headline'] ); ?>"/>
+						</td>
+					</tr>
+					<tr class="form-field">
+						<th scope="row">
+							<label for="text_<?php echo $i; ?>"><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
+						</th>
+						<td>
+							<textarea id="text_<?php echo $i; ?>" name="text[]" rows="10" data-type="text"><?php echo esc_textarea( $data['text'] ); ?></textarea>
+						</td>
+					</tr>
+				</table>
+				<?php $i ++; ?>
+			<?php endforeach; ?>
+		<?php endif; ?>
 		<span class="button button-primary" data-button="add"><span class="dashicons dashicons-plus"></span></span>
 		<?php submit_button(); ?>
 	</form>

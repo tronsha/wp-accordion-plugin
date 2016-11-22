@@ -7,8 +7,6 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-$post_type_object = get_post_type_object( 'page' );
-
 ?>
 <div class="wrap accordion-list">
 	<h1>

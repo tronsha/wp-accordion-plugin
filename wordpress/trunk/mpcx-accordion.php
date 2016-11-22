@@ -23,7 +23,7 @@ load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FIL
 register_activation_hook(
 	__FILE__,
 	function () {
-		add_option( 'mpcx_accordion', json_encode( [ 0 => [ 'version' => '1.2.0' ] ] ) );
+		add_option( 'mpcx_accordion', json_encode( array( 0 => array( 'version' => '1.2.0' ) ) ) );
 	}
 );
 
