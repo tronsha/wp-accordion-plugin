@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Accordion\n"
-"POT-Creation-Date: 2016-11-18 11:38+0100\n"
+"POT-Creation-Date: 2016-11-22 13:09+0100\n"
 "PO-Revision-Date: 2016-11-09 10:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: Stefan Hüsges\n"
@@ -15,39 +15,39 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/edit.php:30
+#: admin/edit.php:34
 msgid "The changes are saved."
 msgstr ""
 
-#: admin/edit.php:44 admin/list.php:22
+#: admin/edit.php:48 admin/list.php:20
 msgid "Title"
 msgstr ""
 
-#: admin/edit.php:63 admin/edit.php:96
+#: admin/edit.php:68 admin/edit.php:102
 msgid "Headline"
 msgstr ""
 
-#: admin/edit.php:71 admin/edit.php:104
+#: admin/edit.php:76 admin/edit.php:110
 msgid "Text"
 msgstr ""
 
-#: admin/list.php:16
+#: admin/list.php:14
 msgid "Add New"
 msgstr ""
 
-#: admin/list.php:25 admin/list.php:47
+#: admin/list.php:23 admin/list.php:45
 msgid "Shortcode"
 msgstr ""
 
-#: admin/list.php:50 admin/list.php:51
+#: admin/list.php:48 admin/list.php:49
 msgid "Edit"
 msgstr ""
 
-#: admin/list.php:55 admin/list.php:56
+#: admin/list.php:53 admin/list.php:54
 msgid "Delete"
 msgstr ""
 
-#: admin/list.php:56
+#: admin/list.php:54
 #, php-format
 msgid "Are you sure you want to delete %s?"
 msgstr ""
