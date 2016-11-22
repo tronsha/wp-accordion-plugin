@@ -3,8 +3,8 @@ Contributors: DeusTron
 Donate link: http://www.mpcx.net/wordpress/donate/
 Tags: accordion, jquery, shortcode, plugin
 Requires at least: 4.0
-Tested up to: 4.6
-Stable tag: 1.2.0-beta
+Tested up to: 4.7
+Stable tag: 1.2.0
 License: MIT
 License URI: https://raw.githubusercontent.com/tronsha/wp-accordion-plugin/master/LICENSE
 
@@ -26,3 +26,4 @@ The Plugin requires PHP 5.3.2 or newer.
 == Changelog ==
 
 = 1.2.0 =
+* added admin area
