@@ -3,7 +3,7 @@ jQuery(document).ready(function () {
     updateAccordionEdit();
 
     jQuery('body').on('click', '.accordion-edit [data-button="add"]', function () {
-        jQuery('table.form-table:hidden').clone().css('display', '').insertBefore(jQuery('[data-button="add"]'));
+        jQuery('table.form-table.accordion:hidden').clone().css('display', '').insertBefore(jQuery('[data-button="add"]'));
         updateAccordionEdit();
         bindAccordionBeforeunload();
     });
@@ -36,7 +36,7 @@ jQuery(document).ready(function () {
 
 function updateAccordionEdit() {
     var positionCounter = 1;
-    var selectorFormTable = jQuery('table.form-table:visible');
+    var selectorFormTable = jQuery('table.form-table.accordion:visible');
     selectorFormTable.each(function () {
         var $this = jQuery(this);
         $this.attr('data-position', positionCounter);

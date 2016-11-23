@@ -11,7 +11,7 @@
     display: none;
 }
 
-.accordion-edit .form-table {
+.accordion-edit .form-table.accordion {
     background-color: rgba(127, 127, 127, 0.1);
     border: 1px solid silver;
     border-collapse: inherit;

@@ -30,6 +30,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 	}
 	$accordions[ $id ]['data']  = $data;
 	$accordions[ $id ]['title'] = stripslashes( $_POST['title'] );
+	$accordions[ $id ]['open'] = stripslashes( $_POST['open'] );
 	update_option( 'mpcx_accordion', json_encode( $accordions ) );
 	echo '<div id="message" class="updated notice is-dismissible"><p>' . __( 'The changes are saved.', 'mpcx-accordion' ) . '</p></div>';
 }
@@ -49,10 +50,16 @@ if ( isset( $_POST['submit'] ) === true ) {
 				<input type="text" id="title" name="title" size="30" value="<?php echo esc_attr( $accordions[ $id ]['title'] ? $accordions[ $id ]['title'] : 'Accordion ' . $id ); ?>" spellcheck="true" autocomplete="off">
 			</div>
 		</div>
+		<table class="form-table">
+			<tr>
+				<th scope="row"><label for="first-tab-open"><?php _e( 'First entry opened', 'mpcx-accordion' ); ?>:</label></th>
+				<td><input type="checkbox" id="first-tab-open" name="open" value="1"<?php checked( $accordions[ $id ]['open'], 1 ); ?> /></td>
+			</tr>
+		</table>
 		<?php $i = 1; ?>
 		<?php if ( isset( $accordions[ $id ]['data'] ) === true && is_array( $accordions[ $id ]['data'] ) === true ): ?>
 			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
-				<table class="form-table">
+				<table class="form-table accordion">
 					<tr>
 						<th colspan="2">
 							<h2>
@@ -86,7 +93,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 		<span class="button button-primary" data-button="add"><span class="dashicons dashicons-plus"></span></span>
 		<?php submit_button(); ?>
 	</form>
-	<table class="form-table" style="display: none;">
+	<table class="form-table accordion" style="display: none;">
 		<tr>
 			<th colspan="2">
 				<h2>

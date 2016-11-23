@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Accordion\n"
-"POT-Creation-Date: 2016-11-22 13:10+0100\n"
-"PO-Revision-Date: 2016-11-22 13:10+0100\n"
+"POT-Creation-Date: 2016-11-23 07:59+0100\n"
+"PO-Revision-Date: 2016-11-23 07:59+0100\n"
 "Last-Translator: \n"
 "Language-Team: Stefan Hüsges\n"
 "Language: de\n"
@@ -14,19 +14,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: admin/edit.php:34
+#: admin/edit.php:35
 msgid "The changes are saved."
 msgstr "Die Änderungen wurden gespeichert."
 
-#: admin/edit.php:48 admin/list.php:20
+#: admin/edit.php:49 admin/list.php:20
 msgid "Title"
 msgstr "Titel"
 
-#: admin/edit.php:68 admin/edit.php:102
+#: admin/edit.php:55
+msgid "First entry opened"
+msgstr "Erster Eintrag geöffnet"
+
+#: admin/edit.php:75 admin/edit.php:109
 msgid "Headline"
 msgstr "Überschrift"
 
-#: admin/edit.php:76 admin/edit.php:110
+#: admin/edit.php:83 admin/edit.php:117
 msgid "Text"
 msgstr "Text"
 
