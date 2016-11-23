@@ -30,3 +30,7 @@
     padding: 0 8px;
     overflow: hidden;
 }
+
+html.no-js .accordion > div {
+    height: auto;
+}
