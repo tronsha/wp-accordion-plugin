@@ -1,0 +1,59 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Accordion\n"
+"POT-Creation-Date: 2016-11-23 08:44+0100\n"
+"PO-Revision-Date: 2016-11-23 08:44+0100\n"
+"Last-Translator: \n"
+"Language-Team: Stefan Hüsges\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: admin/edit.php:35
+msgid "The changes are saved."
+msgstr "The changes are saved."
+
+#: admin/edit.php:49 admin/list.php:20
+msgid "Title"
+msgstr "Title"
+
+#: admin/edit.php:56
+msgid "First entry opened"
+msgstr "First entry opened"
+
+#: admin/edit.php:79 admin/edit.php:113
+msgid "Headline"
+msgstr "Headline"
+
+#: admin/edit.php:87 admin/edit.php:121
+msgid "Text"
+msgstr "Text"
+
+#: admin/list.php:14
+msgid "Add New"
+msgstr "Add New"
+
+#: admin/list.php:23 admin/list.php:45
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: admin/list.php:48 admin/list.php:49
+msgid "Edit"
+msgstr "Edit"
+
+#: admin/list.php:53 admin/list.php:54
+msgid "Delete"
+msgstr "Delete"
+
+#: admin/list.php:54
+#, php-format
+msgid "Are you sure you want to delete %s?"
+msgstr "Are you sure you want to delete %s?"
+
+#~ msgid "New"
+#~ msgstr "New"

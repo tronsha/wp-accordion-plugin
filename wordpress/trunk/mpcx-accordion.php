@@ -8,7 +8,7 @@
  * Plugin Name:       Accordion
  * Plugin URI:        https://github.com/tronsha/wp-accordion-plugin
  * Description:       Just an Accordion Plugin.
- * Version:           1.2.0-beta
+ * Version:           1.2.0
  * Author:            Stefan Hüsges
  * Author URI:        http://www.mpcx.net/
  * Copyright:         Stefan Hüsges
@@ -18,10 +18,12 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FILE__ ) ) . '/localization' );
+
 register_activation_hook(
 	__FILE__,
 	function () {
-		add_option( 'mpcx_accordion', json_encode([0 => ['version' => '1.2.0']]) );
+		add_option( 'mpcx_accordion', json_encode( array( 0 => array( 'version' => '1.2.0' ) ) ) );
 	}
 );
 
@@ -48,41 +50,50 @@ if ( is_admin() ) {
 
 if ( ! is_admin() ) {
 
-	add_action(
-		'init',
-		function () {
-			wp_register_style(
-				'mpcx-accordion',
-				plugin_dir_url( __FILE__ ) . 'public/css/accordion.min.css',
-				array(),
-				'1.2.0'
-			);
-			wp_register_script(
-				'mpcx-accordion',
-				plugin_dir_url( __FILE__ ) . 'public/js/accordion.min.js',
-				array( 'jquery' ),
-				'1.2.0'
-			);
-			wp_enqueue_style( 'mpcx-accordion' );
-			wp_enqueue_script( 'mpcx-accordion' );
-		}
-	);
-
 	add_shortcode(
 		'accordion',
 		function ( $att = array(), $content = null ) {
 			if ( isset( $att['id'] ) === true && $att['id'] > 0 ) {
 				$accordion = json_decode( get_option( 'mpcx_accordion' ), true );
 				$content   = '';
+				$first     = true;
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {
-					$content .= '<h3>' . $data['headline'] . '</h3><div>' . $data['text'] . '</div>';
+					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ( $first === true && $accordion[ $att['id'] ]['open'] == true ? ' class="open"' : '' ) . '>' . $data['text'] . '</div>';
+					$first = false;
 				}
 			} else {
 				$content = do_shortcode( $content );
 			}
 
-			return '<div class="accordion">' . $content . '</div>';
+			return '<div class="accordion"' . ( intval( $att['id'] ) > 0 ? ' id="accordion-' . $att['id'] . '"' : '' ) . '>' . $content . '</div>';
+		}
+	);
+
+	add_action(
+		'init',
+		function () {
+			wp_enqueue_style( 'dashicons' );
 		}
 	);
 
 }
+
+add_action(
+	'init',
+	function () {
+		wp_register_style(
+			'mpcx-accordion',
+			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/css/accordion.min.css',
+			array(),
+			'1.2.0'
+		);
+		wp_register_script(
+			'mpcx-accordion',
+			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/js/accordion.min.js',
+			array( 'jquery' ),
+			'1.2.0'
+		);
+		wp_enqueue_style( 'mpcx-accordion' );
+		wp_enqueue_script( 'mpcx-accordion' );
+	}
+);

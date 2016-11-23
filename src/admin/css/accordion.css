@@ -1,0 +1,42 @@
+.accordion-list .wp-list-table {
+    margin: 10px auto;
+}
+
+.accordion-list .wp-list-table .column-edit,
+.accordion-list .wp-list-table .column-delete {
+    width: 20px;
+}
+
+.accordion-edit h1 {
+    display: none;
+}
+
+.accordion-edit .form-table.accordion {
+    background-color: rgba(127, 127, 127, 0.1);
+    border: 1px solid silver;
+    border-collapse: inherit;
+    border-radius: 6px;
+    padding: 0 12px;
+}
+
+.accordion-edit .form-table h2 > strong {
+    margin-right: 20px;
+}
+
+.accordion-edit [data-button="add"] {
+    margin-top: 10px !important;
+}
+
+.accordion-edit .button > .dashicons:before,
+.accordion-edit .button > .dashicons {
+    line-height: 26px;
+}
+
+@media screen and (max-width: 782px) {
+
+    .accordion-edit .button > .dashicons:before,
+    .accordion-edit .button > .dashicons {
+        line-height: normal;
+    }
+
+}
