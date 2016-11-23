@@ -56,9 +56,9 @@ if ( ! is_admin() ) {
 			if ( isset( $att['id'] ) === true && $att['id'] > 0 ) {
 				$accordion = json_decode( get_option( 'mpcx_accordion' ), true );
 				$content   = '';
-				$first = true;
+				$first     = true;
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {
-					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ($first === true && $accordion[ $att['id'] ]['open'] ? ' class="open"' : '') . '>' . esc_html( $data['text'] ) . '</div>';
+					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ( $first === true && $accordion[ $att['id'] ]['open'] == true ? ' class="open"' : '' ) . '>' . $data['text'] . '</div>';
 					$first = false;
 				}
 			} else {

@@ -14,7 +14,7 @@ jQuery(document).ready(function () {
         $this.bind('click', function () {
             var $div = $this.next('div');
             if ($div.hasClass('open') === false) {
-                if ($this.attr('data-hash') != undefined) {
+                if ($this.attr('data-hash') !== undefined) {
                     window.location.hash = $this.attr('data-hash');
                 }
                 $accordion.children('div.open').each(function () {
@@ -42,7 +42,7 @@ jQuery(document).ready(function () {
                 });
                 $this.find('.arrow-icons').removeClass('dashicons-arrow-right').addClass('dashicons-arrow-down');
             } else {
-                if ($this.attr('data-hash') != undefined) {
+                if ($this.attr('data-hash') !== undefined) {
                     window.location.hash = '!';
                 }
                 $div.removeClass('open');
