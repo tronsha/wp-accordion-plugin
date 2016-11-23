@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Accordion\n"
-"POT-Creation-Date: 2016-11-23 07:59+0100\n"
-"PO-Revision-Date: 2016-11-23 07:59+0100\n"
+"POT-Creation-Date: 2016-11-23 08:44+0100\n"
+"PO-Revision-Date: 2016-11-23 08:44+0100\n"
 "Last-Translator: \n"
 "Language-Team: Stefan Hüsges\n"
 "Language: de\n"
@@ -22,15 +22,15 @@ msgstr "Die Änderungen wurden gespeichert."
 msgid "Title"
 msgstr "Titel"
 
-#: admin/edit.php:55
+#: admin/edit.php:56
 msgid "First entry opened"
 msgstr "Erster Eintrag geöffnet"
 
-#: admin/edit.php:75 admin/edit.php:109
+#: admin/edit.php:79 admin/edit.php:113
 msgid "Headline"
 msgstr "Überschrift"
 
-#: admin/edit.php:83 admin/edit.php:117
+#: admin/edit.php:87 admin/edit.php:121
 msgid "Text"
 msgstr "Text"
 

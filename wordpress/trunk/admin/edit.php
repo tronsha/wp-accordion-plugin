@@ -52,8 +52,12 @@ if ( isset( $_POST['submit'] ) === true ) {
 		</div>
 		<table class="form-table">
 			<tr>
-				<th scope="row"><label for="first-tab-open"><?php _e( 'First entry opened', 'mpcx-accordion' ); ?>:</label></th>
-				<td><input type="checkbox" id="first-tab-open" name="open" value="1"<?php checked( $accordions[ $id ]['open'], 1 ); ?> /></td>
+				<th scope="row">
+					<label for="first-entry-opened"><?php _e( 'First entry opened', 'mpcx-accordion' ); ?>:</label>
+				</th>
+				<td>
+					<input type="checkbox" id="first-entry-opened" name="open" value="1"<?php checked( $accordions[ $id ]['open'], 1 ); ?>>
+				</td>
 			</tr>
 		</table>
 		<?php $i = 1; ?>
