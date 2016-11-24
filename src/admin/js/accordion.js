@@ -24,7 +24,7 @@ jQuery(document).ready(function () {
         bindAccordionBeforeunload();
     });
 
-    jQuery('body').on('change keyup', '.accordion-edit input[type="text"], .accordion-edit textarea', function () {
+    jQuery('body').on('change keyup', '.accordion-edit input[type="checkbox"], .accordion-edit input[type="text"], .accordion-edit textarea', function () {
         bindAccordionBeforeunload();
     });
 
