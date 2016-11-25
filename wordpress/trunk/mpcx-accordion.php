@@ -69,18 +69,14 @@ if ( ! is_admin() ) {
 		}
 	);
 
-	add_action(
-		'init',
-		function () {
-			wp_enqueue_style( 'dashicons' );
-		}
-	);
-
 }
 
 add_action(
 	'init',
 	function () {
+		if ( ! is_admin() ) {
+			wp_enqueue_style( 'dashicons' );
+		}
 		wp_register_style(
 			'mpcx-accordion',
 			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/css/accordion.min.css',
