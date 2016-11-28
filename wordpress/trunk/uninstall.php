@@ -4,4 +4,4 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-delete_option( 'mpcx-accordion' );
+delete_option( 'mpcx_accordion' );

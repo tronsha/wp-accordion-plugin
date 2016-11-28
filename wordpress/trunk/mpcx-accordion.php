@@ -58,21 +58,13 @@ if ( ! is_admin() ) {
 				$content   = '';
 				$first     = true;
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {
-					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ( $first === true && $accordion[ $att['id'] ]['open'] == true ? ' class="open"' : '' ) . '>' . $data['text'] . '</div>';
+					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ( $first === true && $accordion[ $att['id'] ]['open'] == true ? ' class="open" style="height: auto;"' : '' ) . '>' . $data['text'] . '</div>';
 					$first = false;
 				}
 			} else {
 				$content = do_shortcode( $content );
 			}
-
 			return '<div class="accordion"' . ( intval( $att['id'] ) > 0 ? ' id="accordion-' . $att['id'] . '"' : '' ) . '>' . $content . '</div>';
-		}
-	);
-
-	add_action(
-		'init',
-		function () {
-			wp_enqueue_style( 'dashicons' );
 		}
 	);
 
@@ -81,6 +73,9 @@ if ( ! is_admin() ) {
 add_action(
 	'init',
 	function () {
+		if ( ! is_admin() ) {
+			wp_enqueue_style( 'dashicons' );
+		}
 		wp_register_style(
 			'mpcx-accordion',
 			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/css/accordion.min.css',
