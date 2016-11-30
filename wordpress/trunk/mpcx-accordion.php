@@ -8,7 +8,7 @@
  * Plugin Name:       Accordion
  * Plugin URI:        https://github.com/tronsha/wp-accordion-plugin
  * Description:       Just an Accordion Plugin.
- * Version:           1.2.0
+ * Version:           1.2.1
  * Author:            Stefan Hüsges
  * Author URI:        http://www.mpcx.net/
  * Copyright:         Stefan Hüsges
@@ -18,12 +18,14 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
+define( 'MPCX_ACCORDION_VERSION', '1.2.1' );
+
 load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FILE__ ) ) . '/localization' );
 
 register_activation_hook(
 	__FILE__,
 	function () {
-		add_option( 'mpcx_accordion', json_encode( array( 0 => array( 'version' => '1.2.0' ) ) ) );
+		add_option( 'mpcx_accordion', json_encode( array( 0 => array( 'version' => MPCX_ACCORDION_VERSION ) ) ) );
 	}
 );
 
@@ -80,13 +82,13 @@ add_action(
 			'mpcx-accordion',
 			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/css/accordion.min.css',
 			array(),
-			'1.2.0'
+			MPCX_ACCORDION_VERSION
 		);
 		wp_register_script(
 			'mpcx-accordion',
 			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/js/accordion.min.js',
 			array( 'jquery' ),
-			'1.2.0'
+			MPCX_ACCORDION_VERSION
 		);
 		wp_enqueue_style( 'mpcx-accordion' );
 		wp_enqueue_script( 'mpcx-accordion' );
