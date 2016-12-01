@@ -12,6 +12,8 @@
  * Author:            Stefan Hüsges
  * Author URI:        http://www.mpcx.net/
  * Copyright:         Stefan Hüsges
+ * Text Domain:       mpcx-accordion
+ * Domain Path:       /languages/
  * License:           MIT
  * License URI:       https://raw.githubusercontent.com/tronsha/wp-accordion-plugin/master/LICENSE
  */
