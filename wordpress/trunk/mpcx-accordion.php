@@ -52,6 +52,29 @@ if ( is_admin() ) {
 
 }
 
+add_action(
+	'admin_enqueue_scripts',
+	function ( $hook ) {
+		if ( $hook !== 'toplevel_page_accordion' ) {
+			return;
+		}
+		wp_register_style(
+			'mpcx-accordion',
+			plugin_dir_url(__FILE__) .'admin/css/accordion.min.css',
+			array(),
+			MPCX_ACCORDION_VERSION
+		);
+		wp_register_script(
+			'mpcx-accordion',
+			plugin_dir_url(__FILE__) . 'admin/js/accordion.min.js',
+			array('jquery'),
+			MPCX_ACCORDION_VERSION
+		);
+		wp_enqueue_style('mpcx-accordion');
+		wp_enqueue_script('mpcx-accordion');
+	}
+);
+
 if ( ! is_admin() ) {
 
 	add_shortcode(
@@ -75,23 +98,21 @@ if ( ! is_admin() ) {
 }
 
 add_action(
-	'init',
+	'wp_enqueue_scripts',
 	function () {
-		if ( ! is_admin() ) {
-			wp_enqueue_style( 'dashicons' );
-		}
 		wp_register_style(
 			'mpcx-accordion',
-			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/css/accordion.min.css',
+			plugin_dir_url( __FILE__ ) . 'public/css/accordion.min.css',
 			array(),
 			MPCX_ACCORDION_VERSION
 		);
 		wp_register_script(
 			'mpcx-accordion',
-			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/js/accordion.min.js',
+			plugin_dir_url( __FILE__ ) . 'public/js/accordion.min.js',
 			array( 'jquery' ),
 			MPCX_ACCORDION_VERSION
 		);
+		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_style( 'mpcx-accordion' );
 		wp_enqueue_script( 'mpcx-accordion' );
 	}
