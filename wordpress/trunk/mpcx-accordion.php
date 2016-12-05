@@ -60,18 +60,18 @@ add_action(
 		}
 		wp_register_style(
 			'mpcx-accordion',
-			plugin_dir_url(__FILE__) .'admin/css/accordion.min.css',
+			plugin_dir_url( __FILE__ ) . 'admin/css/accordion.min.css',
 			array(),
 			MPCX_ACCORDION_VERSION
 		);
 		wp_register_script(
 			'mpcx-accordion',
-			plugin_dir_url(__FILE__) . 'admin/js/accordion.min.js',
-			array('jquery'),
+			plugin_dir_url( __FILE__ ) . 'admin/js/accordion.min.js',
+			array( 'jquery' ),
 			MPCX_ACCORDION_VERSION
 		);
-		wp_enqueue_style('mpcx-accordion');
-		wp_enqueue_script('mpcx-accordion');
+		wp_enqueue_style( 'mpcx-accordion' );
+		wp_enqueue_script( 'mpcx-accordion' );
 	}
 );
 
