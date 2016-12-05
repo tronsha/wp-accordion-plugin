@@ -19,6 +19,10 @@
     padding: 0 12px;
 }
 
+.accordion-edit [data-type="headline"] {
+    width: 100% !important;
+}
+
 .accordion-edit .form-table h2 > strong {
     margin-right: 20px;
 }

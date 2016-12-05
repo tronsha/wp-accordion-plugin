@@ -87,7 +87,12 @@ if ( isset( $_POST['submit'] ) === true ) {
 							<label for="text_<?php echo $i; ?>"><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
 						</th>
 						<td>
+							<?php
+							wp_editor( esc_textarea( $data['text'] ), 'text_' . $i, array('tinymce' => false));
+							?>
+							<!--
 							<textarea id="text_<?php echo $i; ?>" name="text[]" rows="10" data-type="text"><?php echo esc_textarea( $data['text'] ); ?></textarea>
+							-->
 						</td>
 					</tr>
 				</table>
@@ -121,7 +126,12 @@ if ( isset( $_POST['submit'] ) === true ) {
 				<label><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
 			</th>
 			<td>
+				<?php
+				wp_editor( '', 'text_dummy', array('tinymce' => false));
+				?>
+				<!--
 				<textarea name="text[]" rows="10" data-type="text"></textarea>
+				-->
 			</td>
 		</tr>
 	</table>
