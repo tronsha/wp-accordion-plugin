@@ -47,7 +47,6 @@ function updateAccordionEdit() {
         $this.find('tr:nth-child(2) input').attr('id', 'headline_' + positionCounter);
         $this.find('tr:nth-child(3) label').attr('for', 'text_' + positionCounter);
         $this.find('tr:nth-child(3) textarea').attr('id', 'text_' + positionCounter);
-        $this.find('tr:nth-child(3) textarea').attr('name', 'text[]');
         $this.find('tr:nth-child(3) textarea').attr('data-type', 'text');
         positionCounter++;
     });
