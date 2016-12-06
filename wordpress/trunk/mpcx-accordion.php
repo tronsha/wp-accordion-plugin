@@ -103,7 +103,7 @@ add_action(
 		wp_register_style(
 			'mpcx-accordion',
 			plugin_dir_url( __FILE__ ) . 'public/css/accordion.min.css',
-			array(),
+			array( 'dashicons' ),
 			MPCX_ACCORDION_VERSION
 		);
 		wp_register_script(
@@ -112,7 +112,6 @@ add_action(
 			array( 'jquery' ),
 			MPCX_ACCORDION_VERSION
 		);
-		wp_enqueue_style( 'dashicons' );
 		wp_enqueue_style( 'mpcx-accordion' );
 		wp_enqueue_script( 'mpcx-accordion' );
 	}
