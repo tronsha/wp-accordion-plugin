@@ -87,12 +87,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 							<label for="text_<?php echo $i; ?>"><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
 						</th>
 						<td>
-							<?php
-							wp_editor( $data['text'], 'text_' . $i, array( 'tinymce' => false, 'textarea_name' => 'text[]' ) );
-							?>
-							<!--
-							<textarea id="text_<?php echo $i; ?>" name="text[]" rows="10" data-type="text"><?php echo esc_textarea( $data['text'] ); ?></textarea>
-							-->
+							<?php wp_editor( $data['text'], 'text_' . $i, array( 'tinymce' => false, 'textarea_name' => 'text[]', 'textarea_rows' => '12' ) ); ?>
 						</td>
 					</tr>
 				</table>
@@ -126,12 +121,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 				<label><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
 			</th>
 			<td>
-				<?php
-				wp_editor( '', 'text_0', array( 'tinymce' => false, 'textarea_name' => 'text[]' ) );
-				?>
-				<!--
-				<textarea name="text[]" rows="10" data-type="text"></textarea>
-				-->
+				<?php wp_editor( '', 'text_0', array( 'tinymce' => false, 'textarea_name' => 'text[]', 'textarea_rows' => '12' ) ); ?>
 			</td>
 		</tr>
 	</table>
