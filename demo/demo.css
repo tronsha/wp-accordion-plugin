@@ -1,0 +1,34 @@
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body {
+    background-color: #FFFFFF;
+    font-family: Ubuntu;
+}
+h1 {
+    display: block;
+    letter-spacing: 1px;
+    text-align: center;
+}
+h1, .accordion {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    width: 600px;
+}
+.accordion > h3 {
+    background-color: #000000;
+    border-radius: 0;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 8px;
+}
+.accordion > div {
+    border-left: 1px dotted #000000;
+    border-right: 1px dotted #000000;
+    background-color: #EEEEEE;
+    margin: 0;
+}
