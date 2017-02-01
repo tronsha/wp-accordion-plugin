@@ -8,7 +8,7 @@
  * Plugin Name:       Accordion
  * Plugin URI:        https://github.com/tronsha/wp-accordion-plugin
  * Description:       Just an Accordion Plugin.
- * Version:           1.2.2
+ * Version:           1.2.3
  * Author:            Stefan Hüsges
  * Author URI:        http://www.mpcx.net/
  * Copyright:         Stefan Hüsges
@@ -20,15 +20,31 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-define( 'MPCX_ACCORDION_VERSION', '1.2.2' );
+define( 'MPCX_ACCORDION_VERSION', '1.2.3' );
 
 load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 register_activation_hook(
 	__FILE__,
 	function () {
-		add_option( 'mpcx_accordion', json_encode( array( 0 => array( 'version' => MPCX_ACCORDION_VERSION ) ) ) );
+		add_option( 'mpcx_accordion', array( 0 => array( 'version' => MPCX_ACCORDION_VERSION ) ) );
 	}
+);
+
+add_action(
+	'upgrader_process_complete',
+	function ( $object, $options ) {
+		if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
+			if ( in_array( plugin_basename( __FILE__ ), $options['plugins'] ) === true ) {
+				$data = json_decode( get_option( 'mpcx_accordion' ), true );
+				if ( json_last_error() === JSON_ERROR_NONE ) {
+					update_option( 'mpcx_accordion', $data );
+				}
+			}
+		}
+	},
+	10,
+	2
 );
 
 if ( is_admin() ) {
@@ -81,7 +97,7 @@ if ( ! is_admin() ) {
 		'accordion',
 		function ( $att = array(), $content = null ) {
 			if ( isset( $att['id'] ) === true && $att['id'] > 0 ) {
-				$accordion = json_decode( get_option( 'mpcx_accordion' ), true );
+				$accordion = get_option( 'mpcx_accordion' );
 				$content   = '';
 				$first     = true;
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {

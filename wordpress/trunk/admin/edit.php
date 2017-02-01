@@ -31,7 +31,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 	$accordions[ $id ]['data']  = $data;
 	$accordions[ $id ]['title'] = stripslashes( $_POST['title'] );
 	$accordions[ $id ]['open']  = stripslashes( $_POST['open'] );
-	update_option( 'mpcx_accordion', json_encode( $accordions ) );
+	update_option( 'mpcx_accordion', $accordions );
 	echo '<div id="message" class="updated notice is-dismissible"><p>' . __( 'The changes are saved.', 'mpcx-accordion' ) . '</p></div>';
 }
 

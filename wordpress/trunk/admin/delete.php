@@ -11,7 +11,7 @@ $id = (int) $_GET['delete'];
 
 if ( $id !== 0 ) {
 	unset( $accordions[ $id ] );
-	update_option( 'mpcx_accordion', json_encode( $accordions ) );
+	update_option( 'mpcx_accordion', $accordions );
 }
 
 echo '<script>window.location=\'' . admin_url( 'admin.php?page=accordion' ) . '\'</script>';
