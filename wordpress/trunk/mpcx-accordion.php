@@ -37,9 +37,14 @@ add_action(
 		if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
 			if ( in_array( plugin_basename( __FILE__ ), $options['plugins'] ) === true ) {
 				$data = json_decode( get_option( 'mpcx_accordion' ), true );
-				if ( json_last_error() === JSON_ERROR_NONE ) {
-					update_option( 'mpcx_accordion', $data );
+				if ( is_array($data) === false ) {
+					$data = get_option( 'mpcx_accordion' );
 				}
+				if ( is_array($data) === false ) {
+					$data = array();
+				}
+				$data[0]['version'] = MPCX_ACCORDION_VERSION;
+				update_option( 'mpcx_accordion', $data );
 			}
 		}
 	},
