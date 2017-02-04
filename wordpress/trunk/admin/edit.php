@@ -10,13 +10,13 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 $id = (int) $_GET['edit'];
 
 if ( $id === 0 ) {
-	$id  = 1 + (int) $accordions[0]['index'];
+	$id  = 1 + (int) $accordions['index'];
 	$new = true;
 }
 
 if ( isset( $_POST['submit'] ) === true ) {
 	if ( isset( $_POST['index'] ) === true ) {
-		$accordions[0]['index'] = $_POST['index'];
+		$accordions['index'] = $_POST['index'];
 	}
 	if ( isset( $_POST['headline'] ) === true && is_array( $_POST['text'] ) === true ) {
 		foreach ( $_POST['headline'] as $key => $headline ) {

@@ -27,7 +27,7 @@ load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FIL
 register_activation_hook(
 	__FILE__,
 	function () {
-		add_option( 'mpcx_accordion', array( 0 => array( 'version' => MPCX_ACCORDION_VERSION ) ) );
+		add_option( 'mpcx_accordion', array( 'version' => MPCX_ACCORDION_VERSION ) );
 	}
 );
 
@@ -36,15 +36,7 @@ add_action(
 	function ( $object, $options ) {
 		if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
 			if ( in_array( plugin_basename( __FILE__ ), $options['plugins'] ) === true ) {
-				$data = json_decode( get_option( 'mpcx_accordion' ), true );
-				if ( is_array($data) === false ) {
-					$data = get_option( 'mpcx_accordion' );
-				}
-				if ( is_array($data) === false ) {
-					$data = array();
-				}
-				$data[0]['version'] = MPCX_ACCORDION_VERSION;
-				update_option( 'mpcx_accordion', $data );
+				include plugin_dir_path( __FILE__ ) . 'update.php';
 			}
 		}
 	},

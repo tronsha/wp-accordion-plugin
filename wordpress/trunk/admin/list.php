@@ -31,10 +31,13 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 			</tr>
 		</thead>
 		<tbody>
-		<?php foreach ( $accordions as $key => $accordion ): ?>
-			<?php if ( $key === 0 ) {
-				continue;
-			} ?>
+		<?php
+			for ( $key = 1; $key <= $accordions['index']; $key++ ) {
+				if ( isset( $accordions[ $key ]) === false ) {
+					continue;
+				}
+				$accordion = $accordions[ $key ];
+		?>
 			<tr>
 				<td class="column-title column-primary">
 					<strong>
@@ -56,7 +59,9 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 					</a>
 				</td>
 			</tr>
-		<?php endforeach; ?>
+		<?php
+			}
+		?>
 		</tbody>
 	</table>
 </div>
