@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Accordion\n"
-"POT-Creation-Date: 2016-11-23 08:44+0100\n"
+"POT-Creation-Date: 2017-02-06 09:50+0100\n"
 "PO-Revision-Date: 2016-11-09 10:05+0100\n"
 "Last-Translator: \n"
 "Language-Team: Stefan Hüsges\n"
@@ -39,19 +39,19 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
-#: admin/list.php:23 admin/list.php:45
+#: admin/list.php:23 admin/list.php:48
 msgid "Shortcode"
 msgstr ""
 
-#: admin/list.php:48 admin/list.php:49
+#: admin/list.php:51 admin/list.php:52
 msgid "Edit"
 msgstr ""
 
-#: admin/list.php:53 admin/list.php:54
+#: admin/list.php:56 admin/list.php:57
 msgid "Delete"
 msgstr ""
 
-#: admin/list.php:54
+#: admin/list.php:57
 #, php-format
 msgid "Are you sure you want to delete %s?"
 msgstr ""
