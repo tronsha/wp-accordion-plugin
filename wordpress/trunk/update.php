@@ -5,11 +5,14 @@
  * @package wp-accordion-plugin
  */
 
-$data = json_decode( get_option( 'mpcx_accordion' ), true );
-if ( is_array($data) === false ) {
+$data = get_option( 'mpcx_accordion' );
+if ( is_string( $data ) === true ) {
+	$data = json_decode( $data, true );
+}
+if ( is_array( $data ) === false ) {
 	$data = get_option( 'mpcx_accordion' );
 }
-if ( is_array($data) === false ) {
+if ( is_array( $data ) === false ) {
 	$data = array( 'version' => MPCX_ACCORDION_VERSION );
 }
 if ( isset( $data[0]['index'] ) === true ) {
