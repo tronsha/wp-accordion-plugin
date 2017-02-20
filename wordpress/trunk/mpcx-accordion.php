@@ -31,16 +31,18 @@ register_activation_hook(
 	}
 );
 
-add_action(
-	'upgrader_process_complete',
-	function ( $object, $options ) {
-		if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
-			include plugin_dir_path( __FILE__ ) . 'update.php';
-		}
-	},
-	10,
-	2
-);
+include plugin_dir_path( __FILE__ ) . 'update.php';
+
+//add_action(
+//	'upgrader_process_complete',
+//	function ( $object, $options ) {
+//		if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
+//			include plugin_dir_path( __FILE__ ) . 'update.php';
+//		}
+//	},
+//	10,
+//	2
+//);
 
 if ( is_admin() ) {
 
