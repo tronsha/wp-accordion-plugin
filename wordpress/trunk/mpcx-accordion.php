@@ -8,7 +8,7 @@
  * Plugin Name:       Accordion
  * Plugin URI:        https://github.com/tronsha/wp-accordion-plugin
  * Description:       Just an Accordion Plugin.
- * Version:           1.2.3
+ * Version:           1.2.4
  * Author:            Stefan Hüsges
  * Author URI:        http://www.mpcx.net/
  * Copyright:         Stefan Hüsges
@@ -20,7 +20,7 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-define( 'MPCX_ACCORDION_VERSION', '1.2.3' );
+define( 'MPCX_ACCORDION_VERSION', '1.2.4' );
 
 load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
@@ -31,18 +31,10 @@ register_activation_hook(
 	}
 );
 
-include plugin_dir_path( __FILE__ ) . 'update.php';
-
-//add_action(
-//	'upgrader_process_complete',
-//	function ( $object, $options ) {
-//		if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
-//			include plugin_dir_path( __FILE__ ) . 'update.php';
-//		}
-//	},
-//	10,
-//	2
-//);
+$option = get_option( 'mpcx_accordion' );
+if ( $option !== false && ( is_string( $option ) === true || ( is_array( $option ) === true && isset( $option['version'] ) === false ) ) ) {
+	include plugin_dir_path( __FILE__ ) . 'update.php';
+}
 
 if ( is_admin() ) {
 
@@ -98,7 +90,7 @@ if ( ! is_admin() ) {
 				$content   = '';
 				$first     = true;
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {
-					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ( $first === true && $accordion[ $att['id'] ]['open'] == true ? ' class="open" style="height: auto;"' : '' ) . '>' . $data['text'] . '</div>';
+					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ( $first === true && $accordion[ $att['id'] ]['open'] == true ? ' class="open" style="height: auto;"' : '' ) . '>' . do_shortcode( $data['text'] ) . '</div>';
 					$first = false;
 				}
 			} else {

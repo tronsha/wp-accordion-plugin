@@ -4,7 +4,7 @@ Donate link: http://www.mpcx.net/wordpress/donate/
 Tags: accordion, jquery, shortcode, javascript, js, plugin
 Requires at least: 4.0
 Tested up to: 4.7
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 License: MIT
 License URI: https://raw.githubusercontent.com/tronsha/wp-accordion-plugin/master/LICENSE
 
