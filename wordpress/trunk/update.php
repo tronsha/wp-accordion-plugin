@@ -12,6 +12,9 @@ if ( is_string( $data ) === true ) {
 if ( is_array( $data ) === false ) {
 	$data = array( 'version' => MPCX_ACCORDION_VERSION );
 }
+if ( isset( $data[0]['version'] ) === true ) {
+	$data['version'] = $data[0]['version'];
+}
 if ( isset( $data[0]['index'] ) === true ) {
 	$data['index'] = $data[0]['index'];
 }
