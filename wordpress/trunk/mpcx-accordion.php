@@ -8,25 +8,44 @@
  * Plugin Name:       Accordion
  * Plugin URI:        https://github.com/tronsha/wp-accordion-plugin
  * Description:       Just an Accordion Plugin.
- * Version:           1.2.1
+ * Version:           1.2.4
  * Author:            Stefan Hüsges
  * Author URI:        http://www.mpcx.net/
  * Copyright:         Stefan Hüsges
+ * Text Domain:       mpcx-accordion
+ * Domain Path:       /languages/
  * License:           MIT
  * License URI:       https://raw.githubusercontent.com/tronsha/wp-accordion-plugin/master/LICENSE
  */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-define( 'MPCX_ACCORDION_VERSION', '1.2.1' );
+define( 'MPCX_ACCORDION_VERSION', '1.2.4' );
 
-load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FILE__ ) ) . '/localization' );
+load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
 register_activation_hook(
 	__FILE__,
 	function () {
-		add_option( 'mpcx_accordion', json_encode( array( 0 => array( 'version' => MPCX_ACCORDION_VERSION ) ) ) );
+		add_option( 'mpcx_accordion', array( 'version' => MPCX_ACCORDION_VERSION ) );
 	}
+);
+
+if ( is_string( get_option( 'mpcx_accordion' ) ) === true ) {
+	include plugin_dir_path( __FILE__ ) . 'fix.php';
+}
+
+add_action(
+	'upgrader_process_complete',
+	function ( $object, $options ) {
+		if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
+			if ( in_array( plugin_basename( __FILE__ ), $options['plugins'] ) === true ) {
+				include plugin_dir_path( __FILE__ ) . 'update.php';
+			}
+		}
+	},
+	10,
+	2
 );
 
 if ( is_admin() ) {
@@ -50,43 +69,64 @@ if ( is_admin() ) {
 
 }
 
+add_action(
+	'admin_enqueue_scripts',
+	function ( $hook ) {
+		if ( $hook !== 'toplevel_page_accordion' ) {
+			return;
+		}
+		wp_register_style(
+			'mpcx-accordion',
+			plugin_dir_url( __FILE__ ) . 'admin/css/accordion.min.css',
+			array(),
+			MPCX_ACCORDION_VERSION
+		);
+		wp_register_script(
+			'mpcx-accordion',
+			plugin_dir_url( __FILE__ ) . 'admin/js/accordion.min.js',
+			array( 'jquery' ),
+			MPCX_ACCORDION_VERSION
+		);
+		wp_enqueue_style( 'mpcx-accordion' );
+		wp_enqueue_script( 'mpcx-accordion' );
+	}
+);
+
 if ( ! is_admin() ) {
 
 	add_shortcode(
 		'accordion',
 		function ( $att = array(), $content = null ) {
 			if ( isset( $att['id'] ) === true && $att['id'] > 0 ) {
-				$accordion = json_decode( get_option( 'mpcx_accordion' ), true );
+				$accordion = get_option( 'mpcx_accordion' );
 				$content   = '';
 				$first     = true;
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {
-					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ( $first === true && $accordion[ $att['id'] ]['open'] == true ? ' class="open" style="height: auto;"' : '' ) . '>' . $data['text'] . '</div>';
+					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ( $first === true && $accordion[ $att['id'] ]['open'] == true ? ' class="open" style="height: auto;"' : '' ) . '>' . do_shortcode( $data['text'] ) . '</div>';
 					$first = false;
 				}
 			} else {
 				$content = do_shortcode( $content );
 			}
-			return '<div class="accordion"' . ( intval( $att['id'] ) > 0 ? ' id="accordion-' . $att['id'] . '"' : '' ) . '>' . $content . '</div>';
+
+			return '<div class="accordion no-js"' . ( intval( $att['id'] ) > 0 ? ' id="accordion-' . $att['id'] . '"' : '' ) . '>' . $content . '</div>';
 		}
 	);
 
 }
 
 add_action(
-	'init',
+	'wp_enqueue_scripts',
 	function () {
-		if ( ! is_admin() ) {
-			wp_enqueue_style( 'dashicons' );
-		}
 		wp_register_style(
 			'mpcx-accordion',
-			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/css/accordion.min.css',
-			array(),
+			plugin_dir_url( __FILE__ ) . 'public/css/accordion.min.css',
+			array( 'dashicons' ),
 			MPCX_ACCORDION_VERSION
 		);
 		wp_register_script(
 			'mpcx-accordion',
-			plugin_dir_url( __FILE__ ) . ( is_admin() ? 'admin' : 'public' ) . '/js/accordion.min.js',
+			plugin_dir_url( __FILE__ ) . 'public/js/accordion.min.js',
 			array( 'jquery' ),
 			MPCX_ACCORDION_VERSION
 		);

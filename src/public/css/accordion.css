@@ -35,6 +35,6 @@
     overflow: hidden;
 }
 
-html.no-js .accordion > div {
+.accordion.no-js > div {
     height: auto;
 }

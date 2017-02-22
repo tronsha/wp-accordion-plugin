@@ -7,10 +7,10 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-$accordions = json_decode( get_option( 'mpcx_accordion' ), true );
+$accordions = get_option( 'mpcx_accordion' );
 
 if ( $accordions === null ) {
-	$accordions = array( 0 => array( 'version' => '1.2.0' ) );
+	$accordions = array( 'version' => MPCX_ACCORDION_VERSION );
 }
 
 if ( isset( $_GET['edit'] ) === true ) {

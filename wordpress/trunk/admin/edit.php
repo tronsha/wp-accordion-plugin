@@ -10,13 +10,13 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 $id = (int) $_GET['edit'];
 
 if ( $id === 0 ) {
-	$id  = 1 + (int) $accordions[0]['index'];
+	$id  = 1 + (int) $accordions['index'];
 	$new = true;
 }
 
 if ( isset( $_POST['submit'] ) === true ) {
 	if ( isset( $_POST['index'] ) === true ) {
-		$accordions[0]['index'] = $_POST['index'];
+		$accordions['index'] = $_POST['index'];
 	}
 	if ( isset( $_POST['headline'] ) === true && is_array( $_POST['text'] ) === true ) {
 		foreach ( $_POST['headline'] as $key => $headline ) {
@@ -31,7 +31,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 	$accordions[ $id ]['data']  = $data;
 	$accordions[ $id ]['title'] = stripslashes( $_POST['title'] );
 	$accordions[ $id ]['open']  = stripslashes( $_POST['open'] );
-	update_option( 'mpcx_accordion', json_encode( $accordions ) );
+	update_option( 'mpcx_accordion', $accordions );
 	echo '<div id="message" class="updated notice is-dismissible"><p>' . __( 'The changes are saved.', 'mpcx-accordion' ) . '</p></div>';
 }
 
@@ -87,7 +87,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 							<label for="text_<?php echo $i; ?>"><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
 						</th>
 						<td>
-							<textarea id="text_<?php echo $i; ?>" name="text[]" rows="10" data-type="text"><?php echo esc_textarea( $data['text'] ); ?></textarea>
+							<?php wp_editor( $data['text'], 'text_' . $i, array( 'tinymce' => false, 'textarea_name' => 'text[]', 'textarea_rows' => '12' ) ); ?>
 						</td>
 					</tr>
 				</table>
@@ -121,7 +121,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 				<label><?php _e( 'Text', 'mpcx-accordion' ); ?></label>
 			</th>
 			<td>
-				<textarea name="text[]" rows="10" data-type="text"></textarea>
+				<?php wp_editor( '', 'text_0', array( 'tinymce' => false, 'textarea_name' => 'text[]', 'textarea_rows' => '12' ) ); ?>
 			</td>
 		</tr>
 	</table>

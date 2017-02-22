@@ -1,6 +1,7 @@
 jQuery(document).ready(function () {
     var $ = jQuery;
     var $accordion = $('.accordion');
+    $accordion.removeClass('no-js');
     $accordion.children('h2, h3, h4, h5, h6, strong').each(function () {
         var $this = $(this);
         var $div = $this.next('div');
