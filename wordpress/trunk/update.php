@@ -1,25 +1,14 @@
 <?php
 /**
  * @link    https://github.com/tronsha/wp-accordion-plugin
- * @since   1.2.3
  * @package wp-accordion-plugin
  */
 
+define( 'MPCX_ACCORDION_UPDATE_VERSION', '1.2.4' );
 $data = get_option( 'mpcx_accordion' );
-if ( is_string( $data ) === true ) {
-	$data = json_decode( $data, true );
+if ( version_compare( $data['version'], MPCX_ACCORDION_UPDATE_VERSION, '<' ) ) {
+//	if ( version_compare( $data['version'], '#.#.#', '<' ) ) {
+//	}
 }
-if ( is_array( $data ) === false ) {
-	$data = array( 'version' => MPCX_ACCORDION_VERSION );
-}
-if ( isset( $data[0]['version'] ) === true ) {
-	$data['version'] = $data[0]['version'];
-}
-if ( isset( $data[0]['index'] ) === true ) {
-	$data['index'] = $data[0]['index'];
-}
-if ( isset( $data[0] ) === true ) {
-	unset( $data[0] );
-}
-$data['version'] = MPCX_ACCORDION_VERSION;
+$data['version'] = MPCX_ACCORDION_UPDATE_VERSION;
 update_option( 'mpcx_accordion', $data );

@@ -31,10 +31,22 @@ register_activation_hook(
 	}
 );
 
-$option = get_option( 'mpcx_accordion' );
-if ( $option !== false && ( is_string( $option ) === true || ( is_array( $option ) === true && isset( $option['version'] ) === false ) ) ) {
-	include plugin_dir_path( __FILE__ ) . 'update.php';
+if ( is_string( get_option( 'mpcx_accordion' ) ) === true ) {
+	include plugin_dir_path( __FILE__ ) . 'fix.php';
 }
+
+add_action(
+	'upgrader_process_complete',
+	function ( $object, $options ) {
+		if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
+			if ( in_array( plugin_basename( __FILE__ ), $options['plugins'] ) === true ) {
+				include plugin_dir_path( __FILE__ ) . 'update.php';
+			}
+		}
+	},
+	10,
+	2
+);
 
 if ( is_admin() ) {
 
