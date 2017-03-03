@@ -9,6 +9,6 @@ $data = get_option( 'mpcx_accordion' );
 if ( version_compare( $data['version'], MPCX_ACCORDION_UPDATE_VERSION, '<' ) ) {
 //	if ( version_compare( $data['version'], '#.#.#', '<' ) ) {
 //	}
+	$data['version'] = MPCX_ACCORDION_UPDATE_VERSION;
+	update_option( 'mpcx_accordion', $data );
 }
-$data['version'] = MPCX_ACCORDION_UPDATE_VERSION;
-update_option( 'mpcx_accordion', $data );

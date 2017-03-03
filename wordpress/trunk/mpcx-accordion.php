@@ -35,20 +35,20 @@ if ( is_string( get_option( 'mpcx_accordion' ) ) === true ) {
 	include plugin_dir_path( __FILE__ ) . 'fix.php';
 }
 
-add_action(
-	'upgrader_process_complete',
-	function ( $object, $options ) {
-		if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
-			if ( in_array( plugin_basename( __FILE__ ), $options['plugins'] ) === true ) {
-				include plugin_dir_path( __FILE__ ) . 'update.php';
-			}
-		}
-	},
-	10,
-	2
-);
-
 if ( is_admin() ) {
+
+	add_action(
+		'upgrader_process_complete',
+		function ( $object, $options ) {
+			if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
+				if ( in_array( plugin_basename( __FILE__ ), $options['plugins'] ) === true ) {
+					include plugin_dir_path( __FILE__ ) . 'update.php';
+				}
+			}
+		},
+		10,
+		2
+	);
 
 	add_action(
 		'admin_menu',

@@ -9,7 +9,7 @@ if ( is_string( $data ) === true ) {
 	$data = json_decode( $data, true );
 }
 if ( is_array( $data ) === false ) {
-	$data = array( 'version' => MPCX_ACCORDION_VERSION );
+	$data = array();
 }
 if ( isset( $data[0]['version'] ) === true ) {
 	$data['version'] = $data[0]['version'];
@@ -20,5 +20,5 @@ if ( isset( $data[0]['index'] ) === true ) {
 if ( isset( $data[0] ) === true ) {
 	unset( $data[0] );
 }
-$data['version'] = MPCX_ACCORDION_VERSION;
+$data['version'] = '1.2.4';
 update_option( 'mpcx_accordion', $data );
