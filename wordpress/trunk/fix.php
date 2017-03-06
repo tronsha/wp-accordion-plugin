@@ -5,19 +5,19 @@
  */
 
 $data = get_option( 'mpcx_accordion' );
-if ( is_string( $data ) === true ) {
+if ( true === is_string( $data ) ) {
 	$data = json_decode( $data, true );
 }
-if ( is_array( $data ) === false ) {
+if ( false === is_array( $data ) ) {
 	$data = array();
 }
-if ( isset( $data[0]['version'] ) === true ) {
+if ( true === isset( $data[0]['version'] ) ) {
 	$data['version'] = $data[0]['version'];
 }
-if ( isset( $data[0]['index'] ) === true ) {
+if ( true === isset( $data[0]['index'] ) ) {
 	$data['index'] = $data[0]['index'];
 }
-if ( isset( $data[0] ) === true ) {
+if ( true === isset( $data[0] ) ) {
 	unset( $data[0] );
 }
 $data['version'] = '1.2.4';
