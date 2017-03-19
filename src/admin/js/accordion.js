@@ -53,13 +53,13 @@ function updateAccordionEdit() {
 }
 
 function bindAccordionBeforeunload() {
-    jQuery(window).bind('beforeunload', function () {
+    jQuery(window).on('beforeunload', function () {
         return '';
     });
 }
 
 function unbindAccordionBeforeunload() {
-    jQuery(window).unbind('beforeunload');
+    jQuery(window).off('beforeunload');
 }
 
 function moveAccordionData(from, to) {

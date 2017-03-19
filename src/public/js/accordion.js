@@ -12,7 +12,7 @@ jQuery(document).ready(function () {
             $this.prepend('<span class="arrow-icons dashicons-arrow-right"></span>');
             $div.removeClass('open').css('height', '0');
         }
-        $this.bind('click', function () {
+        $this.on('click', function () {
             var $div = $this.next('div');
             if ($div.hasClass('open') === false) {
                 if ($this.attr('data-hash') !== undefined) {
