@@ -4,7 +4,7 @@
  * @package wp-accordion-plugin
  */
 
-define( 'MPCX_ACCORDION_UPDATE_VERSION', '1.2.4' );
+define( 'MPCX_ACCORDION_UPDATE_VERSION', '1.2.5' );
 $data = get_option( 'mpcx_accordion' );
 if ( true === isset( $data['version'] ) && version_compare( $data['version'], MPCX_ACCORDION_UPDATE_VERSION, '<' ) ) {
 	$data['version'] = MPCX_ACCORDION_UPDATE_VERSION;
