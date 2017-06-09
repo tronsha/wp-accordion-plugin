@@ -8,7 +8,7 @@
  * Plugin Name:       Accordion
  * Plugin URI:        https://github.com/tronsha/wp-accordion-plugin
  * Description:       Just an Accordion Plugin.
- * Version:           1.2.4
+ * Version:           1.2.5
  * Author:            Stefan Hüsges
  * Author URI:        http://www.mpcx.net/
  * Copyright:         Stefan Hüsges
@@ -20,7 +20,7 @@
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
-define( 'MPCX_ACCORDION_VERSION', '1.2.4' );
+define( 'MPCX_ACCORDION_VERSION', '1.2.5' );
 
 load_plugin_textdomain( 'mpcx-accordion', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 
@@ -31,24 +31,24 @@ register_activation_hook(
 	}
 );
 
-if ( is_string( get_option( 'mpcx_accordion' ) ) === true ) {
+if ( true === is_string( get_option( 'mpcx_accordion' ) ) ) {
 	include plugin_dir_path( __FILE__ ) . 'fix.php';
 }
 
-add_action(
-	'upgrader_process_complete',
-	function ( $object, $options ) {
-		if ( $options['action'] === 'update' && $options['type'] === 'plugin' ) {
-			if ( in_array( plugin_basename( __FILE__ ), $options['plugins'] ) === true ) {
-				include plugin_dir_path( __FILE__ ) . 'update.php';
-			}
-		}
-	},
-	10,
-	2
-);
-
 if ( is_admin() ) {
+
+	add_action(
+		'upgrader_process_complete',
+		function ( $object, $options ) {
+			if ( 'update' === $options['action'] && 'plugin' === $options['type'] ) {
+				if ( true === in_array( plugin_basename( __FILE__ ), $options['plugins'] ) ) {
+					include plugin_dir_path( __FILE__ ) . 'update.php';
+				}
+			}
+		},
+		10,
+		2
+	);
 
 	add_action(
 		'admin_menu',
@@ -72,7 +72,7 @@ if ( is_admin() ) {
 add_action(
 	'admin_enqueue_scripts',
 	function ( $hook ) {
-		if ( $hook !== 'toplevel_page_accordion' ) {
+		if ( 'toplevel_page_accordion' !== $hook ) {
 			return;
 		}
 		wp_register_style(
@@ -97,12 +97,12 @@ if ( ! is_admin() ) {
 	add_shortcode(
 		'accordion',
 		function ( $att = array(), $content = null ) {
-			if ( isset( $att['id'] ) === true && $att['id'] > 0 ) {
+			if ( true === isset( $att['id'] ) && $att['id'] > 0 ) {
 				$accordion = get_option( 'mpcx_accordion' );
 				$content   = '';
 				$first     = true;
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {
-					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ( $first === true && $accordion[ $att['id'] ]['open'] == true ? ' class="open" style="height: auto;"' : '' ) . '>' . do_shortcode( $data['text'] ) . '</div>';
+					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . esc_html( $data['headline'] ) . '</h3><div' . ( true === $first && '1' === $accordion[ $att['id'] ]['open'] ? ' class="open" style="height: auto;"' : '' ) . '>' . do_shortcode( $data['text'] ) . '</div>';
 					$first = false;
 				}
 			} else {

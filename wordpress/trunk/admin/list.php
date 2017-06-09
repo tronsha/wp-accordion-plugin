@@ -33,7 +33,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 		<tbody>
 		<?php
 			for ( $key = 1; $key <= $accordions['index']; $key++ ) {
-				if ( isset( $accordions[ $key ]) === false ) {
+				if ( false === isset( $accordions[ $key ]) ) {
 					continue;
 				}
 				$accordion = $accordions[ $key ];

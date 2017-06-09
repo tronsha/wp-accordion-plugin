@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 $id = (int) $_GET['delete'];
 
-if ( $id !== 0 ) {
+if ( 0 !== $id ) {
 	unset( $accordions[ $id ] );
 	update_option( 'mpcx_accordion', $accordions );
 }

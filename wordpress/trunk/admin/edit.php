@@ -14,16 +14,16 @@ if ( $id === 0 ) {
 	$new = true;
 }
 
-if ( isset( $_POST['submit'] ) === true ) {
-	if ( isset( $_POST['index'] ) === true ) {
+if ( true === isset( $_POST['submit'] ) ) {
+	if ( true === isset( $_POST['index'] ) ) {
 		$accordions['index'] = $_POST['index'];
 	}
-	if ( isset( $_POST['headline'] ) === true && is_array( $_POST['text'] ) === true ) {
+	if ( true === isset( $_POST['headline'] ) && true === is_array( $_POST['text'] ) ) {
 		foreach ( $_POST['headline'] as $key => $headline ) {
 			$data[ $key ]['headline'] = stripslashes( $headline );
 		}
 	}
-	if ( isset( $_POST['text'] ) === true && is_array( $_POST['text'] ) === true ) {
+	if ( true === isset( $_POST['text'] ) && true === is_array( $_POST['text'] ) ) {
 		foreach ( $_POST['text'] as $key => $text ) {
 			$data[ $key ]['text'] = stripslashes( $text );
 		}
@@ -41,7 +41,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 		Accordion
 	</h1>
 	<form method="post" action="<?php echo admin_url( 'admin.php?page=accordion&amp;edit=' . $id ); ?>">
-		<?php if ( $new === true ): ?>
+		<?php if ( true === $new ): ?>
 			<input type="hidden" name="index" value="<?php echo $id; ?>">
 		<?php endif; ?>
 		<div id="titlediv">
@@ -61,7 +61,7 @@ if ( isset( $_POST['submit'] ) === true ) {
 			</tr>
 		</table>
 		<?php $i = 1; ?>
-		<?php if ( isset( $accordions[ $id ]['data'] ) === true && is_array( $accordions[ $id ]['data'] ) === true ): ?>
+		<?php if ( true === isset( $accordions[ $id ]['data'] ) && true === is_array( $accordions[ $id ]['data'] ) ): ?>
 			<?php foreach ( $accordions[ $id ]['data'] as $key => $data ): ?>
 				<table class="form-table accordion-entry">
 					<tr>
