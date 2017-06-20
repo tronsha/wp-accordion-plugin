@@ -101,10 +101,8 @@ if ( ! is_admin() ) {
 				$accordion = get_option( 'mpcx_accordion' );
 				$content   = '';
 				$first     = true;
-				$unesc_html_from = array( '&lt;sub&gt;', '&lt;/sub&gt;', '&lt;sup&gt;', '&lt;/sup&gt;' );
-				$unesc_html_to = array( '<sub>', '</sub>', '<sup>', '</sup>' );
 				foreach ( $accordion[ $att['id'] ]['data'] as $data ) {
-					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . str_replace( $unesc_html_from, $unesc_html_to, esc_html( $data['headline'] ) ) . '</h3><div' . ( true === $first && '1' === $accordion[ $att['id'] ]['open'] ? ' class="open" style="height: auto;"' : '' ) . '>' . do_shortcode( $data['text'] ) . '</div>';
+					$content .= '<h3 data-hash="' . urlencode( $data['headline'] ) . '">' . preg_replace( '/&lt;\s*(\/?)\s*(sub|sup)\s*&gt;/is', '<$1$2>', esc_html( $data['headline'] ) ) . '</h3><div' . ( true === $first && '1' === $accordion[ $att['id'] ]['open'] ? ' class="open" style="height: auto;"' : '' ) . '>' . do_shortcode( $data['text'] ) . '</div>';
 					$first = false;
 				}
 			} else {
