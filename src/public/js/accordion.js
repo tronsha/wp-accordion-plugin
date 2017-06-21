@@ -51,5 +51,14 @@ jQuery(document).ready(function () {
                 $this.find('.arrow-icons').removeClass('dashicons-arrow-down').addClass('dashicons-arrow-right');
             }
         });
+        $div.find('a').each(function() {
+            var $a = $(this);
+            var href = $a.attr('href');
+            if (0 === href.indexOf('#')) {
+                $a.on('click', function() {
+                    $('[data-hash="' + href.replace('#', '') + '"]').trigger('click');
+                });
+            }
+        });
     });
 });
