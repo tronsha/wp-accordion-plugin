@@ -5,7 +5,7 @@ jQuery(document).ready(function () {
     $accordion.children('h2, h3, h4, h5, h6, strong').each(function () {
         var $this = $(this);
         var $div = $this.next('div');
-        if ('#' + $this.attr('data-hash') === window.location.hash || ($div.hasClass('open') === true && (window.location.hash === '' || window.location.hash === '#!'))) {
+        if ('#' + $this.attr('data-hash') === window.location.hash || (true === $div.hasClass('open') && ('' === window.location.hash || '#!' === window.location.hash))) {
             $this.prepend('<span class="arrow-icons dashicons-arrow-down"></span>');
             $div.addClass('open').css('height', 'auto');
         } else {
@@ -14,8 +14,8 @@ jQuery(document).ready(function () {
         }
         $this.on('click', function () {
             var $div = $this.next('div');
-            if ($div.hasClass('open') === false) {
-                if ($this.attr('data-hash') !== undefined) {
+            if (false === $div.hasClass('open')) {
+                if (undefined !== $this.attr('data-hash')) {
                     window.location.hash = $this.attr('data-hash');
                 }
                 $accordion.children('div.open').each(function () {
@@ -43,7 +43,7 @@ jQuery(document).ready(function () {
                 });
                 $this.find('.arrow-icons').removeClass('dashicons-arrow-right').addClass('dashicons-arrow-down');
             } else {
-                if ($this.attr('data-hash') !== undefined) {
+                if (undefined !== $this.attr('data-hash')) {
                     window.location.hash = '!';
                 }
                 $div.removeClass('open');
